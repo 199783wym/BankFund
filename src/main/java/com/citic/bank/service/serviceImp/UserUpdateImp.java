@@ -21,6 +21,6 @@ public class UserUpdateImp implements UserInfoUpdate {
     @Override
     public List<User> showAllUsers() {
 
-        return null;
+        return userMapper.selectAllUsers();
     }
 }//Of class UserUpdateImp

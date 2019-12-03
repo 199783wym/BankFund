@@ -1,17 +1,16 @@
 package com.citic.bank.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class TradeExample {
+public class CompyExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TradeExample() {
+    public CompyExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -165,343 +164,353 @@ public class TradeExample {
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeIsNull() {
-            addCriterion("account_code is null");
+        public Criteria andCompyCodeIsNull() {
+            addCriterion("compy_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeIsNotNull() {
-            addCriterion("account_code is not null");
+        public Criteria andCompyCodeIsNotNull() {
+            addCriterion("compy_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeEqualTo(String value) {
-            addCriterion("account_code =", value, "accountCode");
+        public Criteria andCompyCodeEqualTo(String value) {
+            addCriterion("compy_code =", value, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeNotEqualTo(String value) {
-            addCriterion("account_code <>", value, "accountCode");
+        public Criteria andCompyCodeNotEqualTo(String value) {
+            addCriterion("compy_code <>", value, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeGreaterThan(String value) {
-            addCriterion("account_code >", value, "accountCode");
+        public Criteria andCompyCodeGreaterThan(String value) {
+            addCriterion("compy_code >", value, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("account_code >=", value, "accountCode");
+        public Criteria andCompyCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("compy_code >=", value, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeLessThan(String value) {
-            addCriterion("account_code <", value, "accountCode");
+        public Criteria andCompyCodeLessThan(String value) {
+            addCriterion("compy_code <", value, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeLessThanOrEqualTo(String value) {
-            addCriterion("account_code <=", value, "accountCode");
+        public Criteria andCompyCodeLessThanOrEqualTo(String value) {
+            addCriterion("compy_code <=", value, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeLike(String value) {
-            addCriterion("account_code like", value, "accountCode");
+        public Criteria andCompyCodeLike(String value) {
+            addCriterion("compy_code like", value, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeNotLike(String value) {
-            addCriterion("account_code not like", value, "accountCode");
+        public Criteria andCompyCodeNotLike(String value) {
+            addCriterion("compy_code not like", value, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeIn(List<String> values) {
-            addCriterion("account_code in", values, "accountCode");
+        public Criteria andCompyCodeIn(List<String> values) {
+            addCriterion("compy_code in", values, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeNotIn(List<String> values) {
-            addCriterion("account_code not in", values, "accountCode");
+        public Criteria andCompyCodeNotIn(List<String> values) {
+            addCriterion("compy_code not in", values, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeBetween(String value1, String value2) {
-            addCriterion("account_code between", value1, value2, "accountCode");
+        public Criteria andCompyCodeBetween(String value1, String value2) {
+            addCriterion("compy_code between", value1, value2, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountCodeNotBetween(String value1, String value2) {
-            addCriterion("account_code not between", value1, value2, "accountCode");
+        public Criteria andCompyCodeNotBetween(String value1, String value2) {
+            addCriterion("compy_code not between", value1, value2, "compyCode");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeIsNull() {
-            addCriterion("fund_code is null");
+        public Criteria andCompyNameIsNull() {
+            addCriterion("compy_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeIsNotNull() {
-            addCriterion("fund_code is not null");
+        public Criteria andCompyNameIsNotNull() {
+            addCriterion("compy_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeEqualTo(String value) {
-            addCriterion("fund_code =", value, "fundCode");
+        public Criteria andCompyNameEqualTo(String value) {
+            addCriterion("compy_name =", value, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeNotEqualTo(String value) {
-            addCriterion("fund_code <>", value, "fundCode");
+        public Criteria andCompyNameNotEqualTo(String value) {
+            addCriterion("compy_name <>", value, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeGreaterThan(String value) {
-            addCriterion("fund_code >", value, "fundCode");
+        public Criteria andCompyNameGreaterThan(String value) {
+            addCriterion("compy_name >", value, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("fund_code >=", value, "fundCode");
+        public Criteria andCompyNameGreaterThanOrEqualTo(String value) {
+            addCriterion("compy_name >=", value, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeLessThan(String value) {
-            addCriterion("fund_code <", value, "fundCode");
+        public Criteria andCompyNameLessThan(String value) {
+            addCriterion("compy_name <", value, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeLessThanOrEqualTo(String value) {
-            addCriterion("fund_code <=", value, "fundCode");
+        public Criteria andCompyNameLessThanOrEqualTo(String value) {
+            addCriterion("compy_name <=", value, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeLike(String value) {
-            addCriterion("fund_code like", value, "fundCode");
+        public Criteria andCompyNameLike(String value) {
+            addCriterion("compy_name like", value, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeNotLike(String value) {
-            addCriterion("fund_code not like", value, "fundCode");
+        public Criteria andCompyNameNotLike(String value) {
+            addCriterion("compy_name not like", value, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeIn(List<String> values) {
-            addCriterion("fund_code in", values, "fundCode");
+        public Criteria andCompyNameIn(List<String> values) {
+            addCriterion("compy_name in", values, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeNotIn(List<String> values) {
-            addCriterion("fund_code not in", values, "fundCode");
+        public Criteria andCompyNameNotIn(List<String> values) {
+            addCriterion("compy_name not in", values, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeBetween(String value1, String value2) {
-            addCriterion("fund_code between", value1, value2, "fundCode");
+        public Criteria andCompyNameBetween(String value1, String value2) {
+            addCriterion("compy_name between", value1, value2, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andFundCodeNotBetween(String value1, String value2) {
-            addCriterion("fund_code not between", value1, value2, "fundCode");
+        public Criteria andCompyNameNotBetween(String value1, String value2) {
+            addCriterion("compy_name not between", value1, value2, "compyName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueIsNull() {
-            addCriterion("transaction_value is null");
+        public Criteria andRepresenNameIsNull() {
+            addCriterion("represen_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueIsNotNull() {
-            addCriterion("transaction_value is not null");
+        public Criteria andRepresenNameIsNotNull() {
+            addCriterion("represen_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueEqualTo(String value) {
-            addCriterion("transaction_value =", value, "transactionValue");
+        public Criteria andRepresenNameEqualTo(String value) {
+            addCriterion("represen_name =", value, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueNotEqualTo(String value) {
-            addCriterion("transaction_value <>", value, "transactionValue");
+        public Criteria andRepresenNameNotEqualTo(String value) {
+            addCriterion("represen_name <>", value, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueGreaterThan(String value) {
-            addCriterion("transaction_value >", value, "transactionValue");
+        public Criteria andRepresenNameGreaterThan(String value) {
+            addCriterion("represen_name >", value, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueGreaterThanOrEqualTo(String value) {
-            addCriterion("transaction_value >=", value, "transactionValue");
+        public Criteria andRepresenNameGreaterThanOrEqualTo(String value) {
+            addCriterion("represen_name >=", value, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueLessThan(String value) {
-            addCriterion("transaction_value <", value, "transactionValue");
+        public Criteria andRepresenNameLessThan(String value) {
+            addCriterion("represen_name <", value, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueLessThanOrEqualTo(String value) {
-            addCriterion("transaction_value <=", value, "transactionValue");
+        public Criteria andRepresenNameLessThanOrEqualTo(String value) {
+            addCriterion("represen_name <=", value, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueLike(String value) {
-            addCriterion("transaction_value like", value, "transactionValue");
+        public Criteria andRepresenNameLike(String value) {
+            addCriterion("represen_name like", value, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueNotLike(String value) {
-            addCriterion("transaction_value not like", value, "transactionValue");
+        public Criteria andRepresenNameNotLike(String value) {
+            addCriterion("represen_name not like", value, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueIn(List<String> values) {
-            addCriterion("transaction_value in", values, "transactionValue");
+        public Criteria andRepresenNameIn(List<String> values) {
+            addCriterion("represen_name in", values, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueNotIn(List<String> values) {
-            addCriterion("transaction_value not in", values, "transactionValue");
+        public Criteria andRepresenNameNotIn(List<String> values) {
+            addCriterion("represen_name not in", values, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueBetween(String value1, String value2) {
-            addCriterion("transaction_value between", value1, value2, "transactionValue");
+        public Criteria andRepresenNameBetween(String value1, String value2) {
+            addCriterion("represen_name between", value1, value2, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueNotBetween(String value1, String value2) {
-            addCriterion("transaction_value not between", value1, value2, "transactionValue");
+        public Criteria andRepresenNameNotBetween(String value1, String value2) {
+            addCriterion("represen_name not between", value1, value2, "represenName");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientIsNull() {
-            addCriterion("quotient is null");
+        public Criteria andCompyAddrIsNull() {
+            addCriterion("compy_addr is null");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientIsNotNull() {
-            addCriterion("quotient is not null");
+        public Criteria andCompyAddrIsNotNull() {
+            addCriterion("compy_addr is not null");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientEqualTo(String value) {
-            addCriterion("quotient =", value, "quotient");
+        public Criteria andCompyAddrEqualTo(String value) {
+            addCriterion("compy_addr =", value, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientNotEqualTo(String value) {
-            addCriterion("quotient <>", value, "quotient");
+        public Criteria andCompyAddrNotEqualTo(String value) {
+            addCriterion("compy_addr <>", value, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientGreaterThan(String value) {
-            addCriterion("quotient >", value, "quotient");
+        public Criteria andCompyAddrGreaterThan(String value) {
+            addCriterion("compy_addr >", value, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientGreaterThanOrEqualTo(String value) {
-            addCriterion("quotient >=", value, "quotient");
+        public Criteria andCompyAddrGreaterThanOrEqualTo(String value) {
+            addCriterion("compy_addr >=", value, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientLessThan(String value) {
-            addCriterion("quotient <", value, "quotient");
+        public Criteria andCompyAddrLessThan(String value) {
+            addCriterion("compy_addr <", value, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientLessThanOrEqualTo(String value) {
-            addCriterion("quotient <=", value, "quotient");
+        public Criteria andCompyAddrLessThanOrEqualTo(String value) {
+            addCriterion("compy_addr <=", value, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientLike(String value) {
-            addCriterion("quotient like", value, "quotient");
+        public Criteria andCompyAddrLike(String value) {
+            addCriterion("compy_addr like", value, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientNotLike(String value) {
-            addCriterion("quotient not like", value, "quotient");
+        public Criteria andCompyAddrNotLike(String value) {
+            addCriterion("compy_addr not like", value, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientIn(List<String> values) {
-            addCriterion("quotient in", values, "quotient");
+        public Criteria andCompyAddrIn(List<String> values) {
+            addCriterion("compy_addr in", values, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientNotIn(List<String> values) {
-            addCriterion("quotient not in", values, "quotient");
+        public Criteria andCompyAddrNotIn(List<String> values) {
+            addCriterion("compy_addr not in", values, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientBetween(String value1, String value2) {
-            addCriterion("quotient between", value1, value2, "quotient");
+        public Criteria andCompyAddrBetween(String value1, String value2) {
+            addCriterion("compy_addr between", value1, value2, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andQuotientNotBetween(String value1, String value2) {
-            addCriterion("quotient not between", value1, value2, "quotient");
+        public Criteria andCompyAddrNotBetween(String value1, String value2) {
+            addCriterion("compy_addr not between", value1, value2, "compyAddr");
             return (Criteria) this;
         }
 
-        public Criteria andDateIsNull() {
-            addCriterion("date is null");
+        public Criteria andCompyNumberIsNull() {
+            addCriterion("compy_number is null");
             return (Criteria) this;
         }
 
-        public Criteria andDateIsNotNull() {
-            addCriterion("date is not null");
+        public Criteria andCompyNumberIsNotNull() {
+            addCriterion("compy_number is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDateEqualTo(Date value) {
-            addCriterion("date =", value, "date");
+        public Criteria andCompyNumberEqualTo(String value) {
+            addCriterion("compy_number =", value, "compyNumber");
             return (Criteria) this;
         }
 
-        public Criteria andDateNotEqualTo(Date value) {
-            addCriterion("date <>", value, "date");
+        public Criteria andCompyNumberNotEqualTo(String value) {
+            addCriterion("compy_number <>", value, "compyNumber");
             return (Criteria) this;
         }
 
-        public Criteria andDateGreaterThan(Date value) {
-            addCriterion("date >", value, "date");
+        public Criteria andCompyNumberGreaterThan(String value) {
+            addCriterion("compy_number >", value, "compyNumber");
             return (Criteria) this;
         }
 
-        public Criteria andDateGreaterThanOrEqualTo(Date value) {
-            addCriterion("date >=", value, "date");
+        public Criteria andCompyNumberGreaterThanOrEqualTo(String value) {
+            addCriterion("compy_number >=", value, "compyNumber");
             return (Criteria) this;
         }
 
-        public Criteria andDateLessThan(Date value) {
-            addCriterion("date <", value, "date");
+        public Criteria andCompyNumberLessThan(String value) {
+            addCriterion("compy_number <", value, "compyNumber");
             return (Criteria) this;
         }
 
-        public Criteria andDateLessThanOrEqualTo(Date value) {
-            addCriterion("date <=", value, "date");
+        public Criteria andCompyNumberLessThanOrEqualTo(String value) {
+            addCriterion("compy_number <=", value, "compyNumber");
             return (Criteria) this;
         }
 
-        public Criteria andDateIn(List<Date> values) {
-            addCriterion("date in", values, "date");
+        public Criteria andCompyNumberLike(String value) {
+            addCriterion("compy_number like", value, "compyNumber");
             return (Criteria) this;
         }
 
-        public Criteria andDateNotIn(List<Date> values) {
-            addCriterion("date not in", values, "date");
+        public Criteria andCompyNumberNotLike(String value) {
+            addCriterion("compy_number not like", value, "compyNumber");
             return (Criteria) this;
         }
 
-        public Criteria andDateBetween(Date value1, Date value2) {
-            addCriterion("date between", value1, value2, "date");
+        public Criteria andCompyNumberIn(List<String> values) {
+            addCriterion("compy_number in", values, "compyNumber");
             return (Criteria) this;
         }
 
-        public Criteria andDateNotBetween(Date value1, Date value2) {
-            addCriterion("date not between", value1, value2, "date");
+        public Criteria andCompyNumberNotIn(List<String> values) {
+            addCriterion("compy_number not in", values, "compyNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompyNumberBetween(String value1, String value2) {
+            addCriterion("compy_number between", value1, value2, "compyNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompyNumberNotBetween(String value1, String value2) {
+            addCriterion("compy_number not between", value1, value2, "compyNumber");
             return (Criteria) this;
         }
     }

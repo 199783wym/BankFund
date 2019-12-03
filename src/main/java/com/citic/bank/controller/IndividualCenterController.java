@@ -24,13 +24,10 @@ public class IndividualCenterController {
     }//Of personal
 
     @RequestMapping("/fund")
-
     @ResponseBody
-    public String getFund() {
-
+    public List getFund() {
         List<User> allUsers = userInfoUpdate.showAllUsers();
-
-        return "success";
+        return allUsers;
     }//Of getFund
 
 }//Of class IndividualCenterController

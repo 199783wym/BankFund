@@ -2,18 +2,14 @@ package com.citic.bank.model;
 
 import java.util.Date;
 
-public class Trade {
+public class Collect {
     private Long id;
 
     private String accountCode;
 
     private String fundCode;
 
-    private String transactionValue;
-
-    private String quotient;
-
-    private Date date;
+    private Date collectDate;
 
     public Long getId() {
         return id;
@@ -39,27 +35,11 @@ public class Trade {
         this.fundCode = fundCode == null ? null : fundCode.trim();
     }
 
-    public String getTransactionValue() {
-        return transactionValue;
+    public Date getCollectDate() {
+        return collectDate;
     }
 
-    public void setTransactionValue(String transactionValue) {
-        this.transactionValue = transactionValue == null ? null : transactionValue.trim();
-    }
-
-    public String getQuotient() {
-        return quotient;
-    }
-
-    public void setQuotient(String quotient) {
-        this.quotient = quotient == null ? null : quotient.trim();
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCollectDate(Date collectDate) {
+        this.collectDate = collectDate;
     }
 }

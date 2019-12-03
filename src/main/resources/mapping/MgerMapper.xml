@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citic.bank.dao.MgerMapper">
+  <resultMap id="BaseResultMap" type="com.citic.bank.model.Mger">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <id column="mger_code" jdbcType="VARCHAR" property="mgerCode" />
+    <result column="mger_name" jdbcType="VARCHAR" property="mgerName" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="mger_number" jdbcType="VARCHAR" property="mgerNumber" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, mger_code, mger_name, company_name, mger_number
+  </sql>
+  <select id="selectByExample" parameterType="com.citic.bank.model.MgerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from fund_mger_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.citic.bank.model.MgerKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fund_mger_info
+    where id = #{id,jdbcType=BIGINT}
+      and mger_code = #{mgerCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.citic.bank.model.MgerKey">
+    delete from fund_mger_info
+    where id = #{id,jdbcType=BIGINT}
+      and mger_code = #{mgerCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.citic.bank.model.Mger">
+    insert into fund_mger_info (id, mger_code, mger_name, 
+      company_name, mger_number)
+    values (#{id,jdbcType=BIGINT}, #{mgerCode,jdbcType=VARCHAR}, #{mgerName,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{mgerNumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.citic.bank.model.Mger">
+    insert into fund_mger_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mgerCode != null">
+        mger_code,
+      </if>
+      <if test="mgerName != null">
+        mger_name,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="mgerNumber != null">
+        mger_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mgerCode != null">
+        #{mgerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mgerName != null">
+        #{mgerName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="mgerNumber != null">
+        #{mgerNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByExampleSelective" parameterType="map">
+    update fund_mger_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.mgerCode != null">
+        mger_code = #{record.mgerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mgerName != null">
+        mger_name = #{record.mgerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null">
+        company_name = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mgerNumber != null">
+        mger_number = #{record.mgerNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update fund_mger_info
+    set id = #{record.id,jdbcType=BIGINT},
+      mger_code = #{record.mgerCode,jdbcType=VARCHAR},
+      mger_name = #{record.mgerName,jdbcType=VARCHAR},
+      company_name = #{record.companyName,jdbcType=VARCHAR},
+      mger_number = #{record.mgerNumber,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.citic.bank.model.Mger">
+    update fund_mger_info
+    <set>
+      <if test="mgerName != null">
+        mger_name = #{mgerName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="mgerNumber != null">
+        mger_number = #{mgerNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+      and mger_code = #{mgerCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.citic.bank.model.Mger">
+    update fund_mger_info
+    set mger_name = #{mgerName,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      mger_number = #{mgerNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+      and mger_code = #{mgerCode,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.citic.bank.model.Mger">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <id column="mger_code" jdbcType="VARCHAR" property="mgerCode" />
+    <result column="mger_name" jdbcType="VARCHAR" property="mgerName" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="mger_number" jdbcType="VARCHAR" property="mgerNumber" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, mger_code, mger_name, company_name, mger_number
+  </sql>
+  <select id="selectByExample" parameterType="com.citic.bank.model.MgerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from fund_mger_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.citic.bank.model.MgerKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fund_mger_info
+    where id = #{id,jdbcType=BIGINT}
+      and mger_code = #{mgerCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.citic.bank.model.MgerKey">
+    delete from fund_mger_info
+    where id = #{id,jdbcType=BIGINT}
+      and mger_code = #{mgerCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.citic.bank.model.Mger">
+    insert into fund_mger_info (id, mger_code, mger_name, 
+      company_name, mger_number)
+    values (#{id,jdbcType=BIGINT}, #{mgerCode,jdbcType=VARCHAR}, #{mgerName,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{mgerNumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.citic.bank.model.Mger">
+    insert into fund_mger_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mgerCode != null">
+        mger_code,
+      </if>
+      <if test="mgerName != null">
+        mger_name,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="mgerNumber != null">
+        mger_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mgerCode != null">
+        #{mgerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mgerName != null">
+        #{mgerName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="mgerNumber != null">
+        #{mgerNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByExampleSelective" parameterType="map">
+    update fund_mger_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.mgerCode != null">
+        mger_code = #{record.mgerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mgerName != null">
+        mger_name = #{record.mgerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null">
+        company_name = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mgerNumber != null">
+        mger_number = #{record.mgerNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update fund_mger_info
+    set id = #{record.id,jdbcType=BIGINT},
+      mger_code = #{record.mgerCode,jdbcType=VARCHAR},
+      mger_name = #{record.mgerName,jdbcType=VARCHAR},
+      company_name = #{record.companyName,jdbcType=VARCHAR},
+      mger_number = #{record.mgerNumber,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.citic.bank.model.Mger">
+    update fund_mger_info
+    <set>
+      <if test="mgerName != null">
+        mger_name = #{mgerName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="mgerNumber != null">
+        mger_number = #{mgerNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+      and mger_code = #{mgerCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.citic.bank.model.Mger">
+    update fund_mger_info
+    set mger_name = #{mgerName,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      mger_number = #{mgerNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+      and mger_code = #{mgerCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

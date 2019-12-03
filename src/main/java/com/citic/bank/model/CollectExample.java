@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TradeExample {
+public class CollectExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TradeExample() {
+    public CollectExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -305,203 +305,63 @@ public class TradeExample {
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueIsNull() {
-            addCriterion("transaction_value is null");
+        public Criteria andCollectDateIsNull() {
+            addCriterion("collect_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueIsNotNull() {
-            addCriterion("transaction_value is not null");
+        public Criteria andCollectDateIsNotNull() {
+            addCriterion("collect_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueEqualTo(String value) {
-            addCriterion("transaction_value =", value, "transactionValue");
+        public Criteria andCollectDateEqualTo(Date value) {
+            addCriterion("collect_date =", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueNotEqualTo(String value) {
-            addCriterion("transaction_value <>", value, "transactionValue");
+        public Criteria andCollectDateNotEqualTo(Date value) {
+            addCriterion("collect_date <>", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueGreaterThan(String value) {
-            addCriterion("transaction_value >", value, "transactionValue");
+        public Criteria andCollectDateGreaterThan(Date value) {
+            addCriterion("collect_date >", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueGreaterThanOrEqualTo(String value) {
-            addCriterion("transaction_value >=", value, "transactionValue");
+        public Criteria andCollectDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("collect_date >=", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueLessThan(String value) {
-            addCriterion("transaction_value <", value, "transactionValue");
+        public Criteria andCollectDateLessThan(Date value) {
+            addCriterion("collect_date <", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueLessThanOrEqualTo(String value) {
-            addCriterion("transaction_value <=", value, "transactionValue");
+        public Criteria andCollectDateLessThanOrEqualTo(Date value) {
+            addCriterion("collect_date <=", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueLike(String value) {
-            addCriterion("transaction_value like", value, "transactionValue");
+        public Criteria andCollectDateIn(List<Date> values) {
+            addCriterion("collect_date in", values, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueNotLike(String value) {
-            addCriterion("transaction_value not like", value, "transactionValue");
+        public Criteria andCollectDateNotIn(List<Date> values) {
+            addCriterion("collect_date not in", values, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueIn(List<String> values) {
-            addCriterion("transaction_value in", values, "transactionValue");
+        public Criteria andCollectDateBetween(Date value1, Date value2) {
+            addCriterion("collect_date between", value1, value2, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionValueNotIn(List<String> values) {
-            addCriterion("transaction_value not in", values, "transactionValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andTransactionValueBetween(String value1, String value2) {
-            addCriterion("transaction_value between", value1, value2, "transactionValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andTransactionValueNotBetween(String value1, String value2) {
-            addCriterion("transaction_value not between", value1, value2, "transactionValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientIsNull() {
-            addCriterion("quotient is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientIsNotNull() {
-            addCriterion("quotient is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientEqualTo(String value) {
-            addCriterion("quotient =", value, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientNotEqualTo(String value) {
-            addCriterion("quotient <>", value, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientGreaterThan(String value) {
-            addCriterion("quotient >", value, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientGreaterThanOrEqualTo(String value) {
-            addCriterion("quotient >=", value, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientLessThan(String value) {
-            addCriterion("quotient <", value, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientLessThanOrEqualTo(String value) {
-            addCriterion("quotient <=", value, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientLike(String value) {
-            addCriterion("quotient like", value, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientNotLike(String value) {
-            addCriterion("quotient not like", value, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientIn(List<String> values) {
-            addCriterion("quotient in", values, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientNotIn(List<String> values) {
-            addCriterion("quotient not in", values, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientBetween(String value1, String value2) {
-            addCriterion("quotient between", value1, value2, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuotientNotBetween(String value1, String value2) {
-            addCriterion("quotient not between", value1, value2, "quotient");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateIsNull() {
-            addCriterion("date is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateIsNotNull() {
-            addCriterion("date is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateEqualTo(Date value) {
-            addCriterion("date =", value, "date");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateNotEqualTo(Date value) {
-            addCriterion("date <>", value, "date");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateGreaterThan(Date value) {
-            addCriterion("date >", value, "date");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateGreaterThanOrEqualTo(Date value) {
-            addCriterion("date >=", value, "date");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateLessThan(Date value) {
-            addCriterion("date <", value, "date");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateLessThanOrEqualTo(Date value) {
-            addCriterion("date <=", value, "date");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateIn(List<Date> values) {
-            addCriterion("date in", values, "date");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateNotIn(List<Date> values) {
-            addCriterion("date not in", values, "date");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateBetween(Date value1, Date value2) {
-            addCriterion("date between", value1, value2, "date");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateNotBetween(Date value1, Date value2) {
-            addCriterion("date not between", value1, value2, "date");
+        public Criteria andCollectDateNotBetween(Date value1, Date value2) {
+            addCriterion("collect_date not between", value1, value2, "collectDate");
             return (Criteria) this;
         }
     }

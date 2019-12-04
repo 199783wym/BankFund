@@ -16,35 +16,51 @@
     <script src="${pageContext.request.contextPath}/media/layui/layui.js"></script>
     <script>
         //Demo
-        layui.use(['form'], function(){
+        layui.use('form', function(){
             var form = layui.form;
             form.render();
-            // //监听提交
-            // form.on('submit(formDemo)', function(data){
-            //     layer.msg(JSON.stringify(data.field));
-            //     return false;
-            // });
+            //监听提交
+            form.on('checkbox', function(data){
+                // alert(data.elem.checked);
+                // var check = data.elem.checked;
+                // if(check){
+                //     $("#addUser").addClass("layui-btn layui-btn-lg layui-btn-danger layui-btn-radius");
+                // }else{
+                //     $("#addUser").addClass("layui-btn layui-btn-lg layui-btn-danger layui-btn-radius layui-btn-disabled");
+                // }
+            });
         });
     </script>
 
-
+    <!--相关方法-->
+    <script>
+        function isPhoneNumber(tel) {
+            var reg =/^0?1[3|4|5|6|7|8][0-9]\d{8}$/;
+            return reg.test(tel);
+        }
+    </script>
 
     <script type="text/javascript" language="JavaScript">
-
         $(document).ready(function(){
             $('#addUser').click(function () {
                 $.ajax({
                     type: "post",
-                    url: "/",
+                    url: "/regPage",
                     data: {
-                        user_id: $,
-                        user_name: $,
-                        user_pwd: $,
+                        accountName: $("#accountName").val(),
+                        accountPhone: $("#accountPhone").val(),
+                        bankCard: $("#bankCard").val(),
+                        idenNumber: $("#idenNumber").val(),
+                        accountPwd: $("#accountPwd1").val()
                     },
                     datatype: "JSON",
                     async: false,
                     beforeSend: function () {
                         alert("正在提交....");
+                        // if (/^0?1[3|4|5|6|7|8][0-9]\d{8}$/.test(data.accountPhone) === false){
+                        //     alert("手机号不正确，请重试！");
+                        //     document.getElementById("accountPhone").val = "";
+                        // }
                     },
                     success: function (data) {
                         if (data == -1){
@@ -74,7 +90,7 @@
                 <span style="font-size: 22px"></span>
             </div>
             <div class="layui-nav-item" style="margin-left: 85%;padding-top: 30px">
-                <a href="loginPage.jsp" style="color: #d58512">已有账号，请登录 ></a>
+                已有账号，<a href="loginPage.jsp" style="color: #d58512">请登录 ></a>
             </div>
         </div>
 
@@ -89,21 +105,21 @@
                     <div class="layui-form-item" style="margin-top: 40px">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-inline" style="width: 240px">
-                            <input type="text" name="user-name" placeholder="请设置您的用户名" autocomplete="on" class="layui-input">
+                            <input id="accountName" type="text" name="user-name" placeholder="请设置您的用户名" autocomplete="on" class="layui-input">
                         </div>
                     </div>
 
                     <div class="layui-form-item" style="margin-top: 40px">
                         <label class="layui-form-label">手机号</label>
                         <div class="layui-input-inline" style="width: 240px">
-                            <input type="text" name="password" placeholder="请输入您的手机号码" autocomplete="off" class="layui-input">
+                            <input id="accountPhone" type="text" name="password" placeholder="请输入您的手机号码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
                     <div class="layui-form-item" style="margin-top: 40px">
                         <label class="layui-form-label">密码</label>
                         <div class="layui-input-inline" style="width: 240px">
-                            <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            <input id="accountPwd1" type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-form-mid layui-word-aux">8-20位字母、数字的组合</div>
                     </div>
@@ -111,7 +127,7 @@
                     <div class="layui-form-item" style="margin-top: 40px">
                         <label class="layui-form-label">密码确认</label>
                         <div class="layui-input-inline" style="width: 240px">
-                            <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            <input id="accountPwd2" type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-form-mid layui-word-aux">请重复您设置的密码</div>
                     </div>
@@ -119,7 +135,7 @@
                     <div class="layui-form-item" style="margin-top: 40px">
                         <label class="layui-form-label">绑定身份证</label>
                         <div class="layui-input-inline" style="width: 240px">
-                            <input type="text" name="password" placeholder="请输入正确的身份证号" autocomplete="off" class="layui-input">
+                            <input id="idenNumber" type="text" name="password" placeholder="请输入正确的身份证号" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-form-mid layui-word-aux">请输入本人的身份证号</div>
                     </div>
@@ -127,14 +143,14 @@
                     <div class="layui-form-item" style="margin-top: 40px">
                         <label class="layui-form-label">绑定银行卡</label>
                         <div class="layui-input-inline" style="width: 240px">
-                            <input type="text" name="password" placeholder="请输入关联手机号的银行卡" autocomplete="off" class="layui-input">
+                            <input id="bankCard" type="text" name="password" placeholder="请输入关联手机号的银行卡" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-form-mid layui-word-aux">请输入正确的银行卡号</div>
                     </div>
 
                     <div class="layui-form-item" style="margin-top: 40px">
                         <div class="layui-input-block">
-                            <input type="checkbox" name="" title="我已阅读并同意，《用户协议》" lay-skin="primary">
+                            <input id="ck_agree" type="checkbox" name="" title="我已阅读并同意，《用户协议》" lay-skin="primary">
                         </div>
                     </div>
                 </form>
@@ -151,7 +167,7 @@
 
 
 
-        <div class="layui-footer">
+        <div class="layui-footer" style="background-color: transparent">
             <p>
                 Copyright 2011-2018
                 <a href="/" rel="nofollow" target="_blank" title="中信银行">中信银行有限公司版权所有</a> 京ICP备12003911号-3 京公网安备11010802011455号

@@ -4,7 +4,9 @@ import com.citic.bank.model.Compy;
 import com.citic.bank.model.CompyExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CompyMapper {
     int deleteByPrimaryKey(Long id);
 

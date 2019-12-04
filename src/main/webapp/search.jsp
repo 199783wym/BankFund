@@ -314,14 +314,7 @@
                  style="margin-left: 10px;margin-top: 10px;height: 50px"/><span
                 style="font-size: 22px"></span>
         </div>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item" lay-unselect>
-                <a href="${pageContext.request.contextPath}/" layadmin-event="refresh" title="刷新">
-                    <i class="layui-icon layui-icon-refresh-3"></i>
-                </a>
-            </li>
-        </ul>
+
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="loginPage.jsp">
@@ -379,87 +372,16 @@
                             style="width: 80px;float: right;background-color: darkred" id="btn">搜索
                     </button>
                     <input id="searchName" type="text" name="title" required lay-verify="required" placeholder="请输入基金名称"
-                           autocomplete="off" class="layui-input" style="width: 300px;float: right" >
+                           autocomplete="off" class="layui-input" style="width: 300px;float: right" value="${key}">
                 </div>
                 <div class="layui-input-block"
                      style="width: 930px;height: 500px;float: left;margin-left: 0px; margin-top: 10px">
                    <%--选项卡--%>
                     <div class="layui-tab">
-                        <ul class="layui-tab-title">
-                            <li class="layui-this">全部</li>
-                            <li>货币基金</li>
-                            <li>股票基金</li>
-                            <li>债券基金</li>
-                            <li>保本基金</li>
-                        </ul>
                         <div class="layui-tab-content">
                             <%--tab——全部--%>
                             <div class="layui-tab-item layui-show">
-                                <table class="layui-table" lay-data="{height: 308, url:'${pageContext.request.contextPath}/index'}" lay-filter="demoEvent">
-                                    <thead>
-                                    <tr>
-                                        <th lay-data="{field:'fundName', width:120, event: 'setSign', style:'cursor: pointer;'}">基金名称</th>
-                                        <th lay-data="{field:'fundCode', width:100}">基金代码</th>
-                                        <th lay-data="{field:'fundType', width:100}">基金类型</th>
-                                        <th lay-data="{field:'unit', width:120, sort: true}">单位净值</th>
-                                        <th lay-data="{field:'day', width:120, sort: true}">日涨幅</th>
-                                        <th lay-data="{field:'month', width:120,sort: true}">月涨幅</th>
-                                        <th lay-data="{field:'year', width:120,sort: true}">年涨幅</th>
-                                        <th lay-data="{field:'riskLevel', width:100}">风险等级</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                            <div class="layui-tab-item">
-                                <table class="layui-table" lay-data="{height: 308, url:'${pageContext.request.contextPath}/tabtwo'}" lay-filter="demoEvent">
-                                    <thead>
-                                    <tr>
-                                        <th lay-data="{field:'fundName', width:120, event: 'setSign', style:'cursor: pointer;'}">基金名称</th>
-                                        <th lay-data="{field:'fundCode', width:100}">基金代码</th>
-                                        <th lay-data="{field:'fundType', width:100}">基金类型</th>
-                                        <th lay-data="{field:'unit', width:120, sort: true}">单位净值</th>
-                                        <th lay-data="{field:'day', width:120, sort: true}">日涨幅</th>
-                                        <th lay-data="{field:'month', width:120,sort: true}">月涨幅</th>
-                                        <th lay-data="{field:'year', width:120,sort: true}">年涨幅</th>
-                                        <th lay-data="{field:'riskLevel', width:100}">风险等级</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                            <div class="layui-tab-item">
-                                <table class="layui-table" lay-data="{height: 308, url:'${pageContext.request.contextPath}/tabthree'}" lay-filter="demoEvent">
-                                    <thead>
-                                    <tr>
-                                        <th lay-data="{field:'fundName', width:120, event: 'setSign', style:'cursor: pointer;'}">基金名称</th>
-                                        <th lay-data="{field:'fundCode', width:100}">基金代码</th>
-                                        <th lay-data="{field:'fundType', width:100}">基金类型</th>
-                                        <th lay-data="{field:'unit', width:120, sort: true}">单位净值</th>
-                                        <th lay-data="{field:'day', width:120, sort: true}">日涨幅</th>
-                                        <th lay-data="{field:'month', width:120,sort: true}">月涨幅</th>
-                                        <th lay-data="{field:'year', width:120,sort: true}">年涨幅</th>
-                                        <th lay-data="{field:'riskLevel', width:100}">风险等级</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                            <div class="layui-tab-item">
-                                <table class="layui-table" lay-data="{height: 308, url:'${pageContext.request.contextPath}/tabfour'}" lay-filter="demoEvent">
-                                    <thead>
-                                    <tr>
-                                        <th lay-data="{field:'fundName', width:120, event: 'setSign', style:'cursor: pointer;'}">基金名称</th>
-                                        <th lay-data="{field:'fundCode', width:100}">基金代码</th>
-                                        <th lay-data="{field:'fundType', width:100}">基金类型</th>
-                                        <th lay-data="{field:'unit', width:120, sort: true}">单位净值</th>
-                                        <th lay-data="{field:'day', width:120, sort: true}">日涨幅</th>
-                                        <th lay-data="{field:'month', width:120,sort: true}">月涨幅</th>
-                                        <th lay-data="{field:'year', width:120,sort: true}">年涨幅</th>
-                                        <th lay-data="{field:'riskLevel', width:100}">风险等级</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                            <div class="layui-tab-item">
-                                <table class="layui-table" lay-data="{height: 308, url:'${pageContext.request.contextPath}/tabfive'}" lay-filter="demoEvent">
+                                <table class="layui-table" lay-data="{height: 308, url:'${pageContext.request.contextPath}/searchList?key=${key}'} " lay-filter="demoEvent">
                                     <thead>
                                     <tr>
                                         <th lay-data="{field:'fundName', width:120, event: 'setSign', style:'cursor: pointer;'}">基金名称</th>
@@ -559,12 +481,10 @@
         });
     });
 
-
     var oBtn=document.getElementsByTagName('button')[0];
     oBtn.onclick = function(){
         var name = document.getElementById("searchName").value;
         location.href="${pageContext.request.contextPath}/search?name="+name;
     }
-
 </script>
 </html>

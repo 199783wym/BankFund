@@ -35,11 +35,11 @@ public class UserController {
 
     //注册用户
     @RequestMapping(value = "/regPage")
-    public int regist(@Param(value = "accountName") String accountName,
+    public String regist(@Param(value = "accountName") String accountName,
                       @Param(value = "accountPhone") String accountPhone,
                       @Param(value = "accountBankCard") String accountBankCard,
                       @Param(value = "accountIdenNumber") String accountIdenNumber,
-                      String accountPasswd, String re_accountPasswd){
+                      @Param(value="accountPasswd") String accountPasswd){
         int message = 0;
         User user = new User();
         user.setAccountCode(getRandomCode(accountPhone.trim()));
@@ -52,6 +52,6 @@ public class UserController {
         System.out.println(user.getAccountName());
         System.out.println(user.getAccountPwd());
         message =userRegService.regist(user);
-        return message;
+        return "loginPage.jsp";
     }
 }

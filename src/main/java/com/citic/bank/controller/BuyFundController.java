@@ -21,14 +21,23 @@ public class BuyFundController {
      @Autowired
      private ProductService productService;
 
+    /**
+     * 买基金操作
+     * @param productId
+     * @param amount
+     * @param model
+     * @return
+     */
     @RequestMapping("/buyFund")
     public String buyFund(@Param(value="productId")String productId,
                           @Param(value = "amount")String amount,
                           Model model){
-        if(UserSession.getUserSession()==null){
+        //查seeion
+        if(UserSession.getUserSession()==null){//session不存在跳转页面提示
             model.addAttribute("success", "请先登录");
             return "successBuy.jsp";
         }
+        //存在则进行数据库字段操作
          Trade trade= new Trade();
          trade.setAccountCode(UserSession.getUserSession().getAccountCode());
          trade.setFundCode(productId);
@@ -39,9 +48,9 @@ public class BuyFundController {
 
 
          trade.setQuotient(String.format("%.2f",quo));
-         int flag=productService.insert(trade);
+         int flag=productService.insert(trade);//存入交易目录 1成功 2失败
          if (flag==1){
-            model.addAttribute("success", "购买成功");
+             model.addAttribute("success", "购买成功");
          }else{
              model.addAttribute("success", "购买失败");
          }

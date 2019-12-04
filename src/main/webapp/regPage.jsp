@@ -67,7 +67,7 @@
             </div>
 
             <div class="panel-body" style="margin-top: 24px; margin-left: 15%">
-                <form class="layui-form layui-form-pane" action="${pageContext.request.contextPath}/regPage.action">
+                <form class="layui-form layui-form-pane" action="/regPage">
                     <div class="layui-form-item" style="margin-top: 40px">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-inline" style="width: 240px">
@@ -126,7 +126,7 @@
                     <div class="layui-form-item">
                         <div class="layui-input-block">
                             <div style="margin-top: 40px; margin-left: 32.5%;">
-                                <button id="addUser" type="submit" class="layui-btn  layui-btn-lg layui-btn-danger layui-btn-radius" lay-submit lay-filter="formDemo">注册</button>
+                                <button id="addUser" type="submit" class="layui-btn  layui-btn-lg layui-btn-danger layui-btn-radius" >注册</button>
                             </div>
                         </div>
                     </div>

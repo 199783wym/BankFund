@@ -2,20 +2,21 @@ package com.citic.bank.dao;
 
 import com.citic.bank.model.Trade;
 import com.citic.bank.model.TradeExample;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TradeMapper {
     long countByExample(TradeExample example);
+
+    int deleteByExample(TradeExample example);
 
     int deleteByPrimaryKey(Long id);
 
     int insert(Trade record);
 
     int insertSelective(Trade record);
+
+    List<Trade> selectByExample(TradeExample example);
 
     Trade selectByPrimaryKey(Long id);
 
@@ -26,7 +27,4 @@ public interface TradeMapper {
     int updateByPrimaryKeySelective(Trade record);
 
     int updateByPrimaryKey(Trade record);
-
-    @Select("select * from order_info")
-    List<Trade> getAllTrades();
 }

@@ -23,4 +23,13 @@ public class UserUpdateImp implements UserInfoUpdate {
 
         return userMapper.selectAllUsers();
     }
+
+    @Override
+    public User getUserById(String id) {
+        User user=userMapper.selectById(Long.parseLong(id));
+        return user;
+    }//Of getUserById
+
+
+
 }//Of class UserUpdateImp

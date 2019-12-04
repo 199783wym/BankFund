@@ -2,11 +2,9 @@ package com.citic.bank.service.serviceImp;
 
 import com.citic.bank.dao.CompyMapper;
 import com.citic.bank.dao.ProductMapper;
+import com.citic.bank.dao.TradeMapper;
 import com.citic.bank.dto.ProductDTO;
-import com.citic.bank.model.Compy;
-import com.citic.bank.model.CompyExample;
-import com.citic.bank.model.Product;
-import com.citic.bank.model.ProductExample;
+import com.citic.bank.model.*;
 import com.citic.bank.service.ProductService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +24,8 @@ public class ProductServiceImp implements ProductService {
     private ProductMapper productMapper;
     @Autowired
     private CompyMapper compyMapper;
+    @Autowired
+    private TradeMapper tradeMapper;
 
 
 
@@ -178,5 +178,11 @@ public class ProductServiceImp implements ProductService {
             productDTOS.add(productDTO);
         }
         return productDTOS;
+    }
+
+    @Override
+    public int insert(Trade trade) {
+        tradeMapper.insert(trade);
+        return 1;
     }
 }

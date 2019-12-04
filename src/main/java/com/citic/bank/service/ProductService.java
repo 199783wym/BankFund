@@ -3,6 +3,7 @@ package com.citic.bank.service;
 import com.citic.bank.dto.ProductDTO;
 import com.citic.bank.model.Compy;
 import com.citic.bank.model.Product;
+import com.citic.bank.model.Trade;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,4 +25,6 @@ public interface ProductService {
     Product showProduct(Long id);
     //查找基金公司信息
     Compy queryComy(String name);
+
+    int insert(Trade trade);
 }

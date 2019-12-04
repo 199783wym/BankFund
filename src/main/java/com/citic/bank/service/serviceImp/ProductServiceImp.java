@@ -2,14 +2,15 @@ package com.citic.bank.service.serviceImp;
 
 import com.citic.bank.dao.CompyMapper;
 import com.citic.bank.dao.ProductMapper;
-import com.citic.bank.model.Compy;
-import com.citic.bank.model.CompyExample;
-import com.citic.bank.model.Product;
-import com.citic.bank.model.ProductExample;
+import com.citic.bank.dao.TradeMapper;
+import com.citic.bank.dto.ProductDTO;
+import com.citic.bank.model.*;
 import com.citic.bank.service.ProductService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +24,8 @@ public class ProductServiceImp implements ProductService {
     private ProductMapper productMapper;
     @Autowired
     private CompyMapper compyMapper;
+    @Autowired
+    private TradeMapper tradeMapper;
 
 
 
@@ -44,44 +47,142 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public List<Product> queryProductAll() {
+    public List<ProductDTO> queryProductAll() {
         ProductExample productExample=new ProductExample();
-        return productMapper.selectByExample(productExample);
+        List<Product> products =productMapper.selectByExample(productExample);
+        List<ProductDTO> productDTOS=new ArrayList<>();
+        for (Product product :
+                products) {
+            ProductDTO productDTO = new ProductDTO();
+            BeanUtils.copyProperties(product,productDTO);
+            double min = 0.01;//最小值
+            double max = 1.00;//总和
+            int scl =  2;//小数最大位数
+            int pow = (int) Math.pow(10, scl);//指定小数位
+            double unit =Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double one = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double two = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double three = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            productDTO.setDay(one);
+            productDTO.setMonth(two);
+            productDTO.setYear(three);
+            productDTO.setUnit(unit);
+            productDTOS.add(productDTO);
+        }
+        return productDTOS;
     }
 
     @Override
-    public List<Product> queryProduct1() {
+    public List<ProductDTO> queryProduct1() {
         ProductExample productExample=new ProductExample();
-
         productExample.createCriteria().andFundTypeEqualTo("货币型");
-
-        return productMapper.selectByExample(productExample);
+        List<Product> products =productMapper.selectByExample(productExample);
+        List<ProductDTO> productDTOS=new ArrayList<>();
+        for (Product product :
+                products) {
+            ProductDTO productDTO = new ProductDTO();
+            BeanUtils.copyProperties(product,productDTO);
+            double min = 0.01;//最小值
+            double max = 1.00;//总和
+            int scl =  2;//小数最大位数
+            int pow = (int) Math.pow(10, scl);//指定小数位
+            double unit =Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double one = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double two = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double three = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            productDTO.setDay(one);
+            productDTO.setMonth(two);
+            productDTO.setYear(three);
+            productDTO.setUnit(unit);
+            productDTOS.add(productDTO);
+        }
+        return productDTOS;
     }
 
     @Override
-    public List<Product> queryProduct2() {
+    public List<ProductDTO> queryProduct2() {
         ProductExample productExample=new ProductExample();
-
         productExample.createCriteria().andFundTypeEqualTo("股票型");
-
-        return productMapper.selectByExample(productExample);
+        List<Product> products =productMapper.selectByExample(productExample);
+        List<ProductDTO> productDTOS=new ArrayList<>();
+        for (Product product :
+                products) {
+            ProductDTO productDTO = new ProductDTO();
+            BeanUtils.copyProperties(product,productDTO);
+            double min = 0.01;//最小值
+            double max = 1.00;//总和
+            int scl =  2;//小数最大位数
+            int pow = (int) Math.pow(10, scl);//指定小数位
+            double unit =Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double one = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double two = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double three = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            productDTO.setDay(one);
+            productDTO.setMonth(two);
+            productDTO.setYear(three);
+            productDTO.setUnit(unit);
+            productDTOS.add(productDTO);
+        }
+        return productDTOS;
     }
 
     @Override
-    public List<Product> queryProduct3() {
+    public List<ProductDTO> queryProduct3() {
         ProductExample productExample=new ProductExample();
-
         productExample.createCriteria().andFundTypeEqualTo("债券型");
-
-        return productMapper.selectByExample(productExample);
+        List<Product> products =productMapper.selectByExample(productExample);
+        List<ProductDTO> productDTOS=new ArrayList<>();
+        for (Product product :
+                products) {
+            ProductDTO productDTO = new ProductDTO();
+            BeanUtils.copyProperties(product,productDTO);
+            double min = 0.01;//最小值
+            double max = 1.00;//总和
+            int scl =  2;//小数最大位数
+            int pow = (int) Math.pow(10, scl);//指定小数位
+            double unit =Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double one = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double two = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double three = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            productDTO.setDay(one);
+            productDTO.setMonth(two);
+            productDTO.setYear(three);
+            productDTO.setUnit(unit);
+            productDTOS.add(productDTO);
+        }
+        return productDTOS;
     }
 
     @Override
-    public List<Product> queryProduct4() {
+    public List<ProductDTO> queryProduct4() {
         ProductExample productExample=new ProductExample();
-
         productExample.createCriteria().andFundTypeEqualTo("保本型");
+        List<Product> products =productMapper.selectByExample(productExample);
+        List<ProductDTO> productDTOS=new ArrayList<>();
+        for (Product product :
+                products) {
+            ProductDTO productDTO = new ProductDTO();
+            BeanUtils.copyProperties(product,productDTO);
+            double min = 0.01;//最小值
+            double max = 1.00;//总和
+            int scl =  2;//小数最大位数
+            int pow = (int) Math.pow(10, scl);//指定小数位
+            double unit =Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double one = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double two = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            double three = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+            productDTO.setDay(one);
+            productDTO.setMonth(two);
+            productDTO.setYear(three);
+            productDTO.setUnit(unit);
+            productDTOS.add(productDTO);
+        }
+        return productDTOS;
+    }
 
-        return productMapper.selectByExample(productExample);
+    @Override
+    public int insert(Trade trade) {
+        tradeMapper.insert(trade);
+        return 1;
     }
 }

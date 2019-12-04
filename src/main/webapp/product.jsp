@@ -24,136 +24,98 @@
         <div class="panel-body">
             <h2><c:out value="${product.fundName}" default="error"></c:out></h2>
         </div>
-
-        <!-- Table -->
-        <table class="table" style="font-size: 20px">
-
-            <tr >
-                <td>基金名称</td>
-                <td>基金编号</td>
-                <td>基金类型</td>
-                <td>基金经理人</td>
-                <td>基金公司</td>
-
-            </tr>
-            <tr style="font-size: 18px">
-                <td><c:out value="${product.fundName}" default="error"></c:out></td>
-                <td><c:out value="${product.fundCode}" default="error"></c:out></td>
-                <td><c:out value="${product.fundType}" default="error"></c:out></td>
-                <td><c:out value="${product.fundMger}" default="error"></c:out></td>
-                <td><c:out value="${product.compyName}" default="error"></c:out></td>
-            </tr>
-            <tr>
-                <td>基金状态</td>
-                <td>风险等级</td>
-                <td>风险评星</td>
-                <td>基金规模</td>
-                <td>风险人</td>
-
-        </tr>
-            <tr style="font-size: 18px;margin-top: 30px">
-            <td><c:out value="${product.fundStatus}" default="error"></c:out></td>
-                <td><c:out value="${product.riskLevel}" default="error"></c:out></td>
-                <td><c:out value="${product.fundRating}" default="error"></c:out></td>
-                <td><c:out value="${product.fundScale}" default="error"></c:out>元</td>
-                <td><c:out value="${product.issueOrgan}" default="error"></c:out></td>
-            </tr>
-
-        </table>
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <tr>
-                    <td>单位净值:</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>日增长率:</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>风险等级:</td>
-                    <td><c:out value="${product.riskLevel}" default="error"></c:out></td>
-                </tr>
-                <tr>
-                    <td>基金经理:</td>
-                    <td></td>
-                </tr>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <tr>
-                    <td>基金规模:</td>
-                    <td><c:out value="${product.fundScale}" default="error"></c:out>元</td>
-                </tr>
-                <tr>
-                    <td>月增长率:</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>基金类别:</td>
-                    <td><c:out value="${product.fundType}" default="error"></c:out></td>
-                </tr>
-                <tr>
-                    <td>基金公司:</td>
-                    <td><c:out value="${product.fundMger}" default="error"></c:out></td>
-                </tr>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <tr>
-                    <td>成立时间:</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>年增长率:</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>基金状态:</td>
-                    <td></td>
-                </tr>
 
-            </div>
-            <h4><span ></span></h4>
-            <span class="text-desc">
-                        作者：<span ></span>  |
-                        阅读数：<span ></span>  |
-                        发布时间：<span ></span>
-            </span>
-            <hr>
 
+                <%--<div class="panel panel-default col-lg-12 col-md-12 col-sm-12 col-xs-12" >--%>
+                    <%--<!-- Default panel contents -->--%>
+                    <%--<div class="panel-heading h3" >产品详情</div>--%>
+                    <%--<div class="panel-body">--%>
+                        <%--<h2><c:out value="${product.fundName}" default="error"></c:out></h2>--%>
+                    <%--</div>--%>
+
+                    <!-- Table -->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><table class="table" style="font-size: 15px">
+                        <tr>
+                            <td>单位净值:</td>
+                            <td>1.238</td>
+                        </tr>
+                        <tr>
+                            <td>日增长率:</td>
+                            <td style="color: red;">0.8</td>
+                        </tr>
+                        <tr>
+                            <td>风险等级:</td>
+                            <td><c:out value="${product.riskLevel}" default="error"></c:out></td>
+                        </tr>
+                        <tr>
+                            <td>基金经理:</td>
+                            <td><c:out value="${product.fundMger}" default="error"></c:out></td>
+                        </tr>
+
+                    </table>
+                    </div>
+                    <div class="col-wlg-4 col-md-4 col-sm-4 col-xs-4">
+                        <table class="table"  style="font-size: 15px" >
+
+                            <tr>
+                                <td>基金规模:</td>
+                                <td><c:out value="${product.fundScale}" default="error"></c:out>元</td>
+                            </tr>
+                            <tr>
+                                <td>月增长率:</td>
+                                <td style="color:red">0.77</td>
+                            </tr>
+                            <tr>
+                                <td>基金类别:</td>
+                                <td><c:out value="${product.fundType}" default="error"></c:out></td>
+                            </tr>
+                            <tr>
+                                <td>基金公司:</td>
+                                <td><c:out value="${product.fundMger}" default="error"></c:out></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <table class="table" style="font-size: 15px" >
+                            <tr>
+                                <td>公司地址:</td>
+                                <td><c:out value="${compy.compyAddr}" default="error"></c:out></td>
+                            </tr>
+                            <tr>
+                                <td>年增长率:</td>
+                                <td style="color: red;">0.66</td>
+                            </tr>
+                            <tr>
+                                <td>基金状态:</td>
+                                <td>正常状态</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+
+                    </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
             </div>
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <a  class="community-menu" >
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true">
-                    </span>
-                编辑
-            </a>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <form class="form-inline" action="/buyFund">
+                    <input type="hidden" value="${product.fundCode}"  name="productId">
+                    <div class="form-group">
+                        <label for="amount">购买金额</label>
+                        <input type="text" class="form-control" id="amount" name="amount" placeholder="请输入购买金额">元
+                    </div>
+                    <button type="submit" class="btn btn-primary">购买</button>
+                </form>
+            </div>
 
         </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h4>发起人</h4>
 
-                <div class="media" >
-                    <div class="media-left" >
-                        <a href="#">
-                            <img class="media-object img-circle" src="https://avatars3.githubusercontent.com/u/36687898?v=4">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">
-                            <span   ></span>
-                        </h4>
-                    </div>
-                </div>
-                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h4>相关问题</h4>
-            </div>
-        </div>
     </div>
 </div>
 </body>

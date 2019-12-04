@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>主页</title>
+    <title>个人账户</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/media/layui/css/layui.css" media="all">
     <!-- <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css"> -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/media/css/app.css" media="all">

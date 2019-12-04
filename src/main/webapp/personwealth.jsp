@@ -384,26 +384,65 @@
                                             <td>${e.yesterdaygains}</td>
                                             <td>${e.gains}</td>
 
-                                            <td><button id="add" class="layui-btn layui-btn-sm">卖出</button></td>
+                                             <td><button onclick="demo1()" id="add" class="layui-btn layui-btn-sm">卖出</button></td>
 
-                                             <div class="layui-row" id="test" style="display: none;">
-                                                        <div class="layui-col-md10">
-                                                            <form class="layui-form" action="" method="post" id="addEmployeeForm">
-                                                                <div class="layui-form-item">
-                                                                    <label class="layui-form-label" style="padding-left:-50px;">问卷标题:</label>
-                                                                    <div class="layui-input-block">
-                                                                        <input type="text" placeholder="请输入问卷名称" lay-verify="questionnaireName" name="questionnaireName" id="questionnaireName" class="layui-input">
-                                                                    </div>
-                                                                </div>
-                                                              
-                                                                <div class="layui-form-item">
-                                                                    <div class="layui-input-block">
-                                                                        <button lay-submit="" lay-filter="suu" class="layui-btn layui-btn-normal tijiao">提交</button>
-                                                                    </div>
-                                                                </div> 
-                                                            </form>
-                                                        </div>
-                                                    </div>
+                                            <div id="add-main" style="display: none;">
+                                                <form class="layui-form" id="add-form" action="">
+
+                                                    <div class="layui-form-item center" >
+                                                        <label class="layui-form-label" style="width: 70px" >输入金额</label>
+                                                        <div class="layui-input-block">
+                                                            <input type="text" name="yuan"  required value="" lay-verify="required|number|pass" style="width: 240px"  placeholder="￥" autocomplete="off" class="layui-input">
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="layui-form-item">
+                                                        <div class="layui-input-block">
+                                                            <button class="layui-btn" lay-submit lay-filter="save" >卖出</button>
+                                                            <button type="reset" class="layui-btn layui-btn-primary" id="closeBtn" >取消</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <script>
+                                                layui.use(['form', 'layedit', 'laydate'], function() {
+                                                    var form = layui.form
+                                                        , layer = layui.layer
+                                                        , layedit = layui.layedit
+                                                        , laydate = layui.laydate;
+                                                    form.verify({
+                                                        pass: function (value) {
+                                                            if (value < 0) {
+                                                                return '输入正确金额';
+                                                            }
+                                                            if (value > e.wealth) {
+                                                                return '超出上限';
+                                                            }
+                                                        }
+                                                    })
+                                                });
+                                            </script>
+
+                                            <script type="text/javascript">
+                                                //1.信息框
+                                                function demo1() {
+                                                    layer.open({
+                                                        type: 1,
+                                                        title:"卖出基金",
+                                                        closeBtn: false,
+                                                        shift: 2,
+                                                        shade: false,
+                                                        area: ['400px', '300px'],
+                                                        shadeClose: false,
+                                                        content: $("#add-main"),
+                                                        success: function(layero, index){},
+                                                        yes:function(){
+                                                        }
+                                                    });
+
+                                                }
+                                                </script>
 
                                         </tr>
                                     </c:forEach>

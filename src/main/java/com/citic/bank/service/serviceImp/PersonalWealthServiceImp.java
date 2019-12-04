@@ -71,13 +71,18 @@ public class PersonalWealthServiceImp implements PersonalWealthService {
          */
         List<PersonalWealth> personalWealthList = new ArrayList<>();
         for (String fid : fidList) {
+            double interestsRate=(Math.random()/10-0.05);
+
             PersonalWealth personalWealth = new PersonalWealth();
             Product currentProduct = productMap.get(fid);
             Wealth currentWealth = wealthMap.get(fid);
             personalWealth.setFundName(currentProduct.getFundName());
             personalWealth.setFundNo(fid);
-            personalWealth.setInterests(currentWealth.getMoney());
-            personalWealth.setOwnedWealth(0);
+            personalWealth.setInterests(currentWealth.getMoney()*(0.22+interestsRate));
+            personalWealth.setOwnedWealth(currentWealth.getMoney());
+            personalWealth.setInterestsRate(0.22+interestsRate);
+            personalWealth.setLastRate(interestsRate);
+            personalWealth.setLastWealth(currentWealth.getMoney()*interestsRate);
             personalWealthList.add(personalWealth);
         }//Of for
 
@@ -141,7 +146,8 @@ public class PersonalWealthServiceImp implements PersonalWealthService {
 
         ArrayList<CollectExtend> collectExtends = new ArrayList<>();
         for (Collect collect : collectList) {
-            CollectExtend current = new CollectExtend(collect, maps.get(collect.getFundCode()));
+            double interestsRate=(Math.random()/10-0.05);
+            CollectExtend current = new CollectExtend(collect, maps.get(collect.getFundCode()),interestsRate);
             collectExtends.add(current);
         }//Of for
 

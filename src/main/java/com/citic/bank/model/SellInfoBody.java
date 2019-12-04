@@ -29,4 +29,13 @@ public class SellInfoBody {
     public void setSellMoney(double sellMoney) {
         this.sellMoney = sellMoney;
     }
+
+    @Override
+    public String toString() {
+        return "SellInfoBody{" +
+                "account='" + account + '\'' +
+                ", fundCode='" + fundCode + '\'' +
+                ", sellMoney=" + sellMoney +
+                '}';
+    }
 }//Of class sellInfoBody

@@ -30,6 +30,11 @@ public class UserUpdateImp implements UserInfoUpdate {
         return user;
     }//Of getUserById
 
+    @Override
+    public User getUserByAccount(String account) {
+        User user=userMapper.selectByAccout(account);
+        return user;
+    }
 
 
 }//Of class UserUpdateImp

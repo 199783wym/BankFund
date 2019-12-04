@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -80,6 +81,51 @@
             }
         }
 
+    </script>
+
+<%--    Extra sell info --%>
+    <script>
+        //创建ajax通信服务器对象
+        function getHTTPObject(){
+            "use strict"; //注意使用严格模式
+            var xhr;
+            //使用主流的XMLHttpRequest通信服务器对象
+            if(window.XMLHttpRequest){
+                xhr = new window.XMLHttpRequest();
+                //如果是老版本ie，则只支持Active对象
+            } else if(window.ActiveXObject){
+                xhr = new window.ActiveXObject("Msxml2.XMLHTTP");
+            }
+            //将通信服务器对象返回
+            return xhr;
+        }
+
+        function sellfund(fundCode) {
+            var word = prompt("输入卖出金额","");
+            if(word != null && word!="" ){
+                data={"account": "1234",
+                        "fundCode":fundCode,
+                        "sellMoney":word,
+                        };
+                var request = new getHTTPObject();
+                request.open('POST', '/fundSell', false);
+                request.setRequestHeader('content-type', 'application/json');
+                request.send(JSON.stringify(data));
+                if(request.readyState ===4 || request.status ===200){
+                    var msg=request.responseText;
+                    if(msg=="login"){
+                        alert("请先登录");
+                    }else if (msg=="fail"){
+                        alert("卖出失败，请检查金额");
+                    } else {
+                        alert("卖出成功");
+                        window.location.href="/personal";
+                    }
+                }
+            }else{
+                alert("卖出失败！");
+            }
+        }
     </script>
 
     <style type="text/css">
@@ -365,26 +411,38 @@
                             <div class="layui-tab-item layui-show">
                                 <table class="layui-table" id="tbdata" lay-filter="tbop">
                                     <thead>
-                                    <tr>
+                                    <tr><td>基金名称</td>
                                         <td>基金代码</td>
-                                        <td>基金名称</td>
                                         <td>持有资金</td>
                                         <td>日涨幅</td>
                                         <td>昨日收益</td>
                                         <td>总收益</td>
+                                        <td>操作</td>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${pageHelper.list}" var="e">
+                                    <c:forEach items="${wealthlist}" var="item">
                                         <tr>
-                                            <td>${e.no}</td>
-                                            <td>${e.name}</td>
-                                            <td>${e.wealth}</td>
-                                            <td>${e.raise}</td>
-                                            <td>${e.yesterdaygains}</td>
-                                            <td>${e.gains}</td>
+<%--                                            <td>${e.no}</td>--%>
+<%--                                            <td>${e.name}</td>--%>
+<%--                                            <td>${e.wealth}</td>--%>
+<%--                                            <td>${e.raise}</td>--%>
+<%--                                            <td>${e.yesterdaygains}</td>--%>
+<%--                                            <td>${e.gains}</td>--%>
 
-                                            <td><button id="add" class="layui-btn layui-btn-sm">卖出</button></td>
+                                                <td>${item.fundName}</td>
+                                                <td>${item.fundNo}</td>
+                                                <td>${item.ownedWealth}</td>
+                                                <td>${item.lastRate}</td>
+                                                <td>${item.lastWealth}</td>
+                                                <td>${item.interests}</td>
+
+<%--                                                <td>--%>
+<%--                                                    <a  href="#"  onclick="sellfund()">卖出</a>--%>
+<%--                                                </td>--%>
+
+
+                                            <td><button id="add" class="layui-btn layui-btn-sm" onclick="sellfund(${item.fundNo})">卖出</button></td>
 
                                              <div class="layui-row" id="test" style="display: none;">
                                                         <div class="layui-col-md10">
@@ -409,175 +467,183 @@
                                     </c:forEach>
                                     </tbody>
                                 </table>
-                                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-1">
-                                    <c:if test="${hasPrevious!=true}">
-                                        <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">
-                                            <i class="layui-icon">&lt;</i>
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${hasPrevious!=false}">
-                                        <a href="javascript:goPage(${pageHelper.pageIndex-1});" class="layui-laypage-prev" data-page="0">
-                                            <i class="layui-icon">&lt;</i>
-                                        </a>
-                                    </c:if>
+<%--                                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-1">--%>
+<%--                                    <c:if test="${hasPrevious!=true}">--%>
+<%--                                        <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">--%>
+<%--                                            <i class="layui-icon">&lt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
+<%--                                    <c:if test="${hasPrevious!=false}">--%>
+<%--                                        <a href="javascript:goPage(${pageHelper.pageIndex-1});" class="layui-laypage-prev" data-page="0">--%>
+<%--                                            <i class="layui-icon">&lt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
 
-                                    <c:forEach begin="${pageHelper.startPage}" end="${pageHelper.endPage}" step="1" var="i">
-                                        <c:if test="${pageHelper.pageIndex==i}">
-                                            <span style="color:#009688;font-weight: bold;">${i}</span>
-                                        </c:if>
-                                        <c:if test="${pageHelper.pageIndex!=i}">
-                                            <a href="#" onclick="goPage(${i})">${i}</a>
-                                        </c:if>
-                                    </c:forEach>
-                                    <c:if test="${hasNext!=true}">
-                                        <a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">
-                                            <i class="layui-icon">&gt;</i>
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${hasNext!=false}">
-                                        <a href="javascript:goPage(${pageHelper.pageIndex+1});" class="layui-laypage-prev" data-page="0">
-                                            <i class="layui-icon">&gt;</i>
-                                        </a>
-                                    </c:if>
-                                    <span class="layui-laypage-skip">到第
-							   <input type="text" min="1" class="layui-input" id="page" value="${pageHelper.pageIndex }">页
-							   <button type="button" class="layui-laypage-btn" onclick="tiaozhuan(${pageHelper.totalPage});">确定</button>
-							</span>
-                                    <span class="layui-laypage-count">共${pageHelper.totalCount}条</span>
-                                    <span class="layui-laypage-limits">
-							<select onchange="changePageSize(this)" id="pageSize">
-							        <option value="5"  selected>5条/页</option>
-									<option value="10" >10 条/页</option>
-									<option value="15" >15 条/页</option>
-							</select>
-							</span>
-                                </div>
+<%--                                    <c:forEach begin="${pageHelper.startPage}" end="${pageHelper.endPage}" step="1" var="i">--%>
+<%--                                        <c:if test="${pageHelper.pageIndex==i}">--%>
+<%--                                            <span style="color:#009688;font-weight: bold;">${i}</span>--%>
+<%--                                        </c:if>--%>
+<%--                                        <c:if test="${pageHelper.pageIndex!=i}">--%>
+<%--                                            <a href="#" onclick="goPage(${i})">${i}</a>--%>
+<%--                                        </c:if>--%>
+<%--                                    </c:forEach>--%>
+<%--                                    <c:if test="${hasNext!=true}">--%>
+<%--                                        <a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">--%>
+<%--                                            <i class="layui-icon">&gt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
+<%--                                    <c:if test="${hasNext!=false}">--%>
+<%--                                        <a href="javascript:goPage(${pageHelper.pageIndex+1});" class="layui-laypage-prev" data-page="0">--%>
+<%--                                            <i class="layui-icon">&gt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
+<%--                                    <span class="layui-laypage-skip">到第--%>
+<%--							   <input type="text" min="1" class="layui-input" id="page" value="${pageHelper.pageIndex }">页--%>
+<%--							   <button type="button" class="layui-laypage-btn" onclick="tiaozhuan(${pageHelper.totalPage});">确定</button>--%>
+<%--							</span>--%>
+<%--                                    <span class="layui-laypage-count">共${pageHelper.totalCount}条</span>--%>
+<%--                                    <span class="layui-laypage-limits">--%>
+<%--							<select onchange="changePageSize(this)" id="pageSize">--%>
+<%--							        <option value="5"  selected>5条/页</option>--%>
+<%--									<option value="10" >10 条/页</option>--%>
+<%--									<option value="15" >15 条/页</option>--%>
+<%--							</select>--%>
+<%--							</span>--%>
+<%--                                </div>--%>
                             </div>
                             <div class="layui-tab-item">   <table class="layui-table" id="tbdata" lay-filter="tbop">
                                 <thead>
                                 <tr>
-                                    <td>基金代码</td>
                                     <td>基金名称</td>
+                                    <td>基金代码</td>
+
                                     <td>收藏日期</td>
                                     <td>日涨幅</td>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${pageHelper.list}" var="e">
+                                <c:forEach items="${collectlist}" var="item">
                                     <tr>
-                                        <td>${e.no}</td>
-                                        <td>${e.name}</td>
-                                        <td>${e.day}</td>
-                                        <td>${e.raise}</td>
+                                        <td>${item.fundName}</td>
+                                        <td>${item.fundCode}</td>
+                                        <td>${item.dateStr}</td>
+                                        <td> ${item.lastRate}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
-                                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-1">
-                                    <c:if test="${hasPrevious!=true}">
-                                        <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">
-                                            <i class="layui-icon">&lt;</i>
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${hasPrevious!=false}">
-                                        <a href="javascript:goPage(${pageHelper.pageIndex-1});" class="layui-laypage-prev" data-page="0">
-                                            <i class="layui-icon">&lt;</i>
-                                        </a>
-                                    </c:if>
+<%--                                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-1">--%>
+<%--                                    <c:if test="${hasPrevious!=true}">--%>
+<%--                                        <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">--%>
+<%--                                            <i class="layui-icon">&lt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
+<%--                                    <c:if test="${hasPrevious!=false}">--%>
+<%--                                        <a href="javascript:goPage(${pageHelper.pageIndex-1});" class="layui-laypage-prev" data-page="0">--%>
+<%--                                            <i class="layui-icon">&lt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
 
-                                    <c:forEach begin="${pageHelper.startPage}" end="${pageHelper.endPage}" step="1" var="i">
-                                        <c:if test="${pageHelper.pageIndex==i}">
-                                            <span style="color:#009688;font-weight: bold;">${i}</span>
-                                        </c:if>
-                                        <c:if test="${pageHelper.pageIndex!=i}">
-                                            <a href="#" onclick="goPage(${i})">${i}</a>
-                                        </c:if>
-                                    </c:forEach>
-                                    <c:if test="${hasNext!=true}">
-                                        <a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">
-                                            <i class="layui-icon">&gt;</i>
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${hasNext!=false}">
-                                        <a href="javascript:goPage(${pageHelper.pageIndex+1});" class="layui-laypage-prev" data-page="0">
-                                            <i class="layui-icon">&gt;</i>
-                                        </a>
-                                    </c:if>
-                                    <span class="layui-laypage-skip">到第
-							   <input type="text" min="1" class="layui-input" id="page" value="${pageHelper.pageIndex }">页
-							   <button type="button" class="layui-laypage-btn" onclick="tiaozhuan(${pageHelper.totalPage});">确定</button>
-							</span>
-                                    <span class="layui-laypage-count">共${pageHelper.totalCount}条</span>
-                                    <span class="layui-laypage-limits">
-							<select onchange="changePageSize(this)" id="pageSize">
-							        <option value="5"  selected>5条/页</option>
-									<option value="10" >10 条/页</option>
-									<option value="15" >15 条/页</option>
-							</select>
-							</span>
-                                </div></div>
+<%--                                    <c:forEach begin="${pageHelper.startPage}" end="${pageHelper.endPage}" step="1" var="i">--%>
+<%--                                        <c:if test="${pageHelper.pageIndex==i}">--%>
+<%--                                            <span style="color:#009688;font-weight: bold;">${i}</span>--%>
+<%--                                        </c:if>--%>
+<%--                                        <c:if test="${pageHelper.pageIndex!=i}">--%>
+<%--                                            <a href="#" onclick="goPage(${i})">${i}</a>--%>
+<%--                                        </c:if>--%>
+<%--                                    </c:forEach>--%>
+<%--                                    <c:if test="${hasNext!=true}">--%>
+<%--                                        <a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">--%>
+<%--                                            <i class="layui-icon">&gt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
+<%--                                    <c:if test="${hasNext!=false}">--%>
+<%--                                        <a href="javascript:goPage(${pageHelper.pageIndex+1});" class="layui-laypage-prev" data-page="0">--%>
+<%--                                            <i class="layui-icon">&gt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
+<%--                                    <span class="layui-laypage-skip">到第--%>
+<%--							   <input type="text" min="1" class="layui-input" id="page" value="${pageHelper.pageIndex }">页--%>
+<%--							   <button type="button" class="layui-laypage-btn" onclick="tiaozhuan(${pageHelper.totalPage});">确定</button>--%>
+<%--							</span>--%>
+<%--                                    <span class="layui-laypage-count">共${pageHelper.totalCount}条</span>--%>
+<%--                                    <span class="layui-laypage-limits">--%>
+<%--							<select onchange="changePageSize(this)" id="pageSize">--%>
+<%--							        <option value="5"  selected>5条/页</option>--%>
+<%--									<option value="10" >10 条/页</option>--%>
+<%--									<option value="15" >15 条/页</option>--%>
+<%--							</select>--%>
+<%--							</span>--%>
+<%--                                </div>--%>
+                             </div>
                             <div class="layui-tab-item"> <table class="layui-table" id="tbdata" lay-filter="tbop">
                                 <thead>
                                 <tr>
-                                    <td>基金代码</td>
-                                    <td>基金名称</td>
-                                    <td>交易金额</td>
+                                    <th>基金名称</th>
+                                    <th>基金编号</th>
+                                    <th>交易金额</th>
+                                    <th>交易份额</th>
+                                    <th>时间</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${pageHelper.list}" var="e">
+                                <c:forEach items="${historylist}" var="item">
                                     <tr>
-                                        <td>${e.no}</td>
-                                        <td>${e.name}</td>
-
-                                        <td>${e.gains}</td>
+                                        <td>${item.fundName}</td>
+                                        <td>${item.fundCode}</td>
+                                        <td>${item.transactionValue}</td>
+                                        <td>${item.quotient}</td>
+                                        <td>${item.datestr}</td>
+                                            <%--                            <td>--%>
+                                            <%--                                <a  href="#"  onclick="sellfund()">卖出</a>--%>
+                                            <%--                            </td>--%>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
-                                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-1">
-                                    <c:if test="${hasPrevious!=true}">
-                                        <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">
-                                            <i class="layui-icon">&lt;</i>
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${hasPrevious!=false}">
-                                        <a href="javascript:goPage(${pageHelper.pageIndex-1});" class="layui-laypage-prev" data-page="0">
-                                            <i class="layui-icon">&lt;</i>
-                                        </a>
-                                    </c:if>
+<%--                                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-1">--%>
+<%--                                    <c:if test="${hasPrevious!=true}">--%>
+<%--                                        <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">--%>
+<%--                                            <i class="layui-icon">&lt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
+<%--                                    <c:if test="${hasPrevious!=false}">--%>
+<%--                                        <a href="javascript:goPage(${pageHelper.pageIndex-1});" class="layui-laypage-prev" data-page="0">--%>
+<%--                                            <i class="layui-icon">&lt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
 
-                                    <c:forEach begin="${pageHelper.startPage}" end="${pageHelper.endPage}" step="1" var="i">
-                                        <c:if test="${pageHelper.pageIndex==i}">
-                                            <span style="color:#009688;font-weight: bold;">${i}</span>
-                                        </c:if>
-                                        <c:if test="${pageHelper.pageIndex!=i}">
-                                            <a href="#" onclick="goPage(${i})">${i}</a>
-                                        </c:if>
-                                    </c:forEach>
-                                    <c:if test="${hasNext!=true}">
-                                        <a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">
-                                            <i class="layui-icon">&gt;</i>
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${hasNext!=false}">
-                                        <a href="javascript:goPage(${pageHelper.pageIndex+1});" class="layui-laypage-prev" data-page="0">
-                                            <i class="layui-icon">&gt;</i>
-                                        </a>
-                                    </c:if>
-                                    <span class="layui-laypage-skip">到第
-							   <input type="text" min="1" class="layui-input" id="page" value="${pageHelper.pageIndex }">页
-							   <button type="button" class="layui-laypage-btn" onclick="tiaozhuan(${pageHelper.totalPage});">确定</button>
-							</span>
-                                    <span class="layui-laypage-count">共${pageHelper.totalCount}条</span>
-                                    <span class="layui-laypage-limits">
-							<select onchange="changePageSize(this)" id="pageSize">
-							        <option value="5"  selected>5条/页</option>
-									<option value="10" >10 条/页</option>
-									<option value="15" >15 条/页</option>
-							</select>
-							</span>
-                                </div>
+<%--                                    <c:forEach begin="${pageHelper.startPage}" end="${pageHelper.endPage}" step="1" var="i">--%>
+<%--                                        <c:if test="${pageHelper.pageIndex==i}">--%>
+<%--                                            <span style="color:#009688;font-weight: bold;">${i}</span>--%>
+<%--                                        </c:if>--%>
+<%--                                        <c:if test="${pageHelper.pageIndex!=i}">--%>
+<%--                                            <a href="#" onclick="goPage(${i})">${i}</a>--%>
+<%--                                        </c:if>--%>
+<%--                                    </c:forEach>--%>
+<%--                                    <c:if test="${hasNext!=true}">--%>
+<%--                                        <a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">--%>
+<%--                                            <i class="layui-icon">&gt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
+<%--                                    <c:if test="${hasNext!=false}">--%>
+<%--                                        <a href="javascript:goPage(${pageHelper.pageIndex+1});" class="layui-laypage-prev" data-page="0">--%>
+<%--                                            <i class="layui-icon">&gt;</i>--%>
+<%--                                        </a>--%>
+<%--                                    </c:if>--%>
+<%--                                    <span class="layui-laypage-skip">到第--%>
+<%--							   <input type="text" min="1" class="layui-input" id="page" value="${pageHelper.pageIndex }">页--%>
+<%--							   <button type="button" class="layui-laypage-btn" onclick="tiaozhuan(${pageHelper.totalPage});">确定</button>--%>
+<%--							</span>--%>
+<%--                                    <span class="layui-laypage-count">共${pageHelper.totalCount}条</span>--%>
+<%--                                    <span class="layui-laypage-limits">--%>
+<%--							<select onchange="changePageSize(this)" id="pageSize">--%>
+<%--							        <option value="5"  selected>5条/页</option>--%>
+<%--									<option value="10" >10 条/页</option>--%>
+<%--									<option value="15" >15 条/页</option>--%>
+<%--							</select>--%>
+<%--							</span>--%>
+<%--                                </div>--%>
 
 
                             </div>
@@ -591,14 +657,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${pageHelper.list}" var="e">
+<%--                                <c:forEach items="${pageHelper.list}" var="e">--%>
                                     <tr>
-                                        <td>${e.no}</td>
-                                        <td>${e.name}</td>
-                                        <td>${e.wealth}</td>
-                                        <td>${e.raise}</td>
+                                        <td><c:out value="${name}" default="error"> </c:out></td>
+                                        <td><c:out value="${phone}" default="error"> </c:out></td>
+                                        <td><c:out value="${bankCard}" default="error"></c:out></td>
+                                        <td><c:out value="${id}" default="error"></c:out></td>
                                     </tr>
-                                </c:forEach>
+<%--                                </c:forEach>--%>
                                 </tbody>
                             </table></div>
                         </div>

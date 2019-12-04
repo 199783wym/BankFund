@@ -8,5 +8,6 @@ public interface UserInfoUpdate {
     boolean updateUserInfo(User record);
     List<User> showAllUsers();
     User getUserById(String id);
+    User getUserByAccount(String id);
 
 }//Of interface UserInfoUpdate

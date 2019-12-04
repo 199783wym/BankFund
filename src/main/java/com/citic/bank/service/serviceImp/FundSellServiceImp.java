@@ -1,12 +1,18 @@
+/**
+ * @Author XXD
+ */
 package com.citic.bank.service.serviceImp;
 
+import com.citic.bank.dao.TradeMapper;
 import com.citic.bank.dao.WealthMapper;
+import com.citic.bank.model.Trade;
 import com.citic.bank.model.Wealth;
 import com.citic.bank.model.WealthExample;
 import com.citic.bank.service.FundSellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,6 +21,8 @@ public class FundSellServiceImp implements FundSellService {
 
     @Autowired
     WealthMapper wealthMapper;
+    @Autowired
+    TradeMapper tradeMapper;
 
     @Override
     public boolean sellFund(String account, double money) {
@@ -38,7 +46,18 @@ public class FundSellServiceImp implements FundSellService {
         WealthExample wealthExample=new WealthExample();
         wealthExample.createCriteria().andUidEqualTo(wealth.getUid()).andFidEqualTo(wealth.getFid());
         int status=wealthMapper.updateByExample(wealth,wealthExample);
-        if(status==1){
+
+
+        //Step3. Log the sell info to the order table
+        Trade trade=new Trade();
+        trade.setAccountCode(account);
+        trade.setFundCode(wealth.getFid());
+        trade.setDate(new Date());
+        trade.setQuotient(String.format("-%.2f",share));
+        trade.setTransactionValue(String.format("-%.2f",money));
+        int insetStatus=tradeMapper.insert(trade);
+
+        if(status==1 && insetStatus==1){
             return true;
         }//Of if
         return false;

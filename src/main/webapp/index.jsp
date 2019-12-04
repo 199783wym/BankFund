@@ -57,6 +57,7 @@
                 location.href="${pageContext.request.contextPath}/user/exituser";
             }
         }
+
 <<<<<<< HEAD
         element.tabAdd('demo', {
             title:n
@@ -75,10 +76,8 @@
 		}
 	}
 
-</script>
-=======
     </script>
->>>>>>> d33abde2174a41b13f2653d1c4fe512f87a0792e
+
     <style type="text/css">
         ul {
             list-style:none;

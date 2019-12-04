@@ -13,7 +13,19 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/media/css/app.css" media="all">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/media/css/font-awesome.min.css">
     <script src="${pageContext.request.contextPath}/media/js/jquery.min.js"></script>
-
+    <script src="${pageContext.request.contextPath}/media/layui/layui.js"></script>
+    <script>
+        //Demo
+        layui.use(['form'], function(){
+            var form = layui.form;
+            form.render();
+            // //监听提交
+            // form.on('submit(formDemo)', function(data){
+            //     layer.msg(JSON.stringify(data.field));
+            //     return false;
+            // });
+        });
+    </script>
 
 
 
@@ -119,9 +131,16 @@
                         </div>
                         <div class="layui-form-mid layui-word-aux">请输入正确的银行卡号</div>
                     </div>
+
+                    <div class="layui-form-item" style="margin-top: 40px">
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="" title="我已阅读并同意，《用户协议》" lay-skin="primary">
+                        </div>
+                    </div>
                 </form>
 
                 <div style="text-align: left; margin-top: 40px">温馨提示：为保障您的支付安全，请您设置单独的登录密码，请勿使用与您常用软件和网站相同相似的密码。</div>
+
 
                 <div style="margin-top: 40px; margin-left: 32.5%;">
                     <button id="addUser" type="button" class="layui-btn layui-btn-lg layui-btn-danger layui-btn-radius">注册</button>

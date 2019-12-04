@@ -5,11 +5,11 @@ import com.citic.bank.service.FundSellService;
 import com.citic.bank.service.Utils;
 import com.citic.bank.util.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class SellFundController {
@@ -17,10 +17,12 @@ public class SellFundController {
     private FundSellService fundSellService;
 
     @ResponseBody
-    @RequestMapping("/fundSell")
+    @RequestMapping(value = "/fundSell",method = RequestMethod.POST)
     public String sellFund(@RequestBody SellInfoBody sellInfoBody){
+        System.out.println(sellInfoBody);
+
         if(UserSession.getUserSession()==null){
-            return "login";
+//            return "login";
         }//Of if
         String account=sellInfoBody.getAccount();
         double money=sellInfoBody.getSellMoney();

@@ -37,7 +37,7 @@ public class IndividualCenterController {
      */
     @RequestMapping("")
     public String personal(HttpSession session, Model model) {
-        String id = "1";
+        String id = "1234";
         //Step1. Get the user info
         try {
             id = (String) session.getAttribute("uid");
@@ -45,10 +45,10 @@ public class IndividualCenterController {
         } catch (Exception e) {
             System.out.println(e);
         }
-        id = "1";
+        id = "1234";
         //Step2. Get user info
 
-        User userInfo = userInfoUpdate.getUserById(id);
+        User userInfo = userInfoUpdate.getUserByAccount(id);
         //The information of individual to show on the page
         HashMap<String, String> map = new HashMap<>();
         map.put("name", userInfo.getAccountName());
@@ -76,7 +76,7 @@ public class IndividualCenterController {
         model.addAttribute("historylist", tradeList);
         model.addAttribute("collectlist", collectList);
 
-        return "/individualcenter.jsp";
+        return "/personwealth.jsp";
 
     }//Of personal
 

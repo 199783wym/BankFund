@@ -22,9 +22,10 @@ public class SellFundController {
         System.out.println(sellInfoBody);
 
         if(UserSession.getUserSession()==null){
-//            return "login";
+            return "login";
         }//Of if
-        String account=sellInfoBody.getAccount();
+//        String account=sellInfoBody.getAccount();
+        String account=UserSession.getUserSession().getAccountCode();
         double money=sellInfoBody.getSellMoney();
         if(!fundSellService.sellFund(account,money)){
             return "fail";

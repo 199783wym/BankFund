@@ -324,14 +324,25 @@
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
+                <c:if test="${empty sessionScope}">
                 <a href="loginPage.jsp">
                     登录
                 </a>
+                </c:if>
+                <c:if test="${not empty sessionScope}">
+                    <a href="/personal">
+                        ${sessionScope.user.accountName}
+                    </a>
+
+
+
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:showTab(1001,'userInfo.jsp','我的信息');">我的信息</a></dd>
+<%--                    <dd><a href="javascript:showTab(1001,'/personal','我的信息');">我的信息</a></dd>--%>
+                    <dd><a href="/personal">我的信息</a></dd>
                     <dd><a href="javascript:showTab(1001,'photo.jsp','更改头像');">更改头像</a></dd>
-                    <dd><a href="javascript:showTab(1002,'password.jsp','修改密码');">修改密码</a></dd>
+                    <dd><a href="/logout">退出登录</a></dd>
                 </dl>
+                </c:if>
             </li>
 <%--            <li class="layui-nav-item"><a href="#" onclick="exit();">注销</a></li>--%>
             <li class="layui-nav-item">

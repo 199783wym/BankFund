@@ -3,6 +3,7 @@ package com.citic.bank.controller;
 import com.citic.bank.model.User;
 import com.citic.bank.service.UserRegService;
 import com.citic.bank.util.Md5;
+import com.citic.bank.util.UserSession;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,4 +55,12 @@ public class UserController {
         message =userRegService.regist(user);
         return "loginPage.jsp";
     }
+
+
+    //退出登录
+    @RequestMapping("/logout")
+    public String logout(){
+        UserSession.removeSession();
+        return "/";
+    }//Of logout
 }

@@ -7,9 +7,12 @@ import com.citic.bank.model.*;
 import com.citic.bank.service.FundInfo;
 import com.citic.bank.service.PersonalWealthService;
 import com.citic.bank.service.UserInfoUpdate;
+import com.citic.bank.util.UserSession;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,16 +39,18 @@ public class IndividualCenterController {
      * @return
      */
     @RequestMapping("")
-    public String personal(HttpSession session, Model model) {
+    public String personal(Model model) {
+//        System.out.println(UserSession.getUserSession());
         String id = "1234";
         //Step1. Get the user info
         try {
-            id = (String) session.getAttribute("uid");
+            id = UserSession.getUserSession().getAccountCode();
 
         } catch (Exception e) {
             System.out.println(e);
+            return "/";
         }
-        id = "1234";
+//        id = "1234";
         //Step2. Get user info
 
         User userInfo = userInfoUpdate.getUserByAccount(id);
@@ -87,6 +92,11 @@ public class IndividualCenterController {
         return allUsers;
     }//Of getFund
 
+    @RequestMapping("/updateInfo")
+    @ResponseBody
+    public String updateInfo(@RequestBody User user){
+        return "test";
+    }//Of upDateInfo
 
     @RequestMapping("/test")
     public String test() {

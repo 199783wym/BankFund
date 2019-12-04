@@ -127,7 +127,9 @@ public class PersonalWealthServiceImp implements PersonalWealthService {
         CollectExample collectExample = new CollectExample();
         collectExample.createCriteria().andAccountCodeEqualTo(account);
         List<Collect> collectList = collectMapper.selectByExample(collectExample);
-
+        if(collectList==null||collectList.size()==0){
+            return null;
+        }//Of if
         /**
          * Concat the fund number and the fund name
          */

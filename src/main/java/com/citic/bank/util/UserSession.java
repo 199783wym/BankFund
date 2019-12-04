@@ -30,4 +30,8 @@ public class UserSession {
 
         return (User) getSession().getAttribute(USER_IN_SESSION);
     }
+    public static void removeSession(){
+        getSession().invalidate();
+    }//Of removeSession
+
 }

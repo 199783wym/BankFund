@@ -103,7 +103,7 @@
         function sellfund(fundCode) {
             var word = prompt("输入卖出金额","");
             if(word != null && word!="" ){
-                data={"account": "1234",
+                data={"account": "",
                         "fundCode":fundCode,
                         "sellMoney":word,
                         };
@@ -115,6 +115,7 @@
                     var msg=request.responseText;
                     if(msg=="login"){
                         alert("请先登录");
+                        window.location.href="/loginPage.jsp";
                     }else if (msg=="fail"){
                         alert("卖出失败，请检查金额");
                     } else {
@@ -365,16 +366,27 @@
             <%--<li class="layui-nav-item" style="margin-right: 20px">--%>
             <%--<a href="javascript:showTab(1001,'${pageContext.request.contextPath}/process/myTask','待办事项');">待办事项<span class="layui-badge">${sessionScope.taskSum}</span></a>--%>
             <%--</li>--%>
-            <li class="layui-nav-item">
-                <a href="javascript:">
-                    登录
-                </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:showTab(1001,'userInfo.jsp','我的信息');">我的信息</a></dd>
-                    <dd><a href="javascript:showTab(1001,'photo.jsp','更改头像');">更改头像</a></dd>
-                    <dd><a href="javascript:showTab(1002,'password.jsp','修改密码');">修改密码</a></dd>
-                </dl>
-            </li>
+                    <li class="layui-nav-item">
+                        <c:if test="${empty sessionScope}">
+                            <a href="loginPage.jsp">
+                                登录
+                            </a>
+                        </c:if>
+                        <c:if test="${not empty sessionScope}">
+                            <a href="/personal">
+                                    ${sessionScope.user.accountName}
+                            </a>
+
+
+
+                            <dl class="layui-nav-child">
+                                    <%--                    <dd><a href="javascript:showTab(1001,'/personal','我的信息');">我的信息</a></dd>--%>
+                                <dd><a href="/personal">我的信息</a></dd>
+                                <dd><a href="javascript:showTab(1001,'photo.jsp','更改头像');">更改头像</a></dd>
+                                        <dd><a href="/logout">退出登录</a></dd>
+                            </dl>
+                        </c:if>
+                    </li>
             <%--            <li class="layui-nav-item"><a href="#" onclick="exit();">注销</a></li>--%>
             <li class="layui-nav-item">
                 <a href="regPage.jsp">

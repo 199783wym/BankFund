@@ -50,4 +50,15 @@ public class User extends UserKey {
     public void setIdenNumber(String idenNumber) {
         this.idenNumber = idenNumber == null ? null : idenNumber.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "accountName='" + accountName + '\'' +
+                ", accountPwd='" + accountPwd + '\'' +
+                ", accountPhone='" + accountPhone + '\'' +
+                ", bankCard='" + bankCard + '\'' +
+                ", idenNumber='" + idenNumber + '\'' +
+                '}';
+    }
 }

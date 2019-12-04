@@ -234,8 +234,8 @@ public class ProductServiceImp implements ProductService {
             newWealth.setMoney(wealthBefore.getMoney()+Double.parseDouble(trade.getTransactionValue()));
             newWealth.setShare(wealthBefore.getShare()+Double.parseDouble(trade.getQuotient()));
             WealthExample wealthExample1 = new WealthExample();
-            wealthExample1.createCriteria().andFidEqualTo(wealth.getFid());
-            wealthExample1.createCriteria().andUidEqualTo(wealth.getUid());
+            wealthExample1.createCriteria().andFidEqualTo(wealth.getFid())
+            .andUidEqualTo(wealth.getUid());
             wealthMapper.updateByExampleSelective(newWealth, wealthExample1);
         }
         tradeMapper.insert(trade);

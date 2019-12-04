@@ -27,4 +27,6 @@ public interface ProductService {
     Compy queryComy(String name);
 
     int insert(Trade trade);
+
+    List<ProductDTO> query(String name);
 }

@@ -12,11 +12,31 @@
     <script src="/media/js/bootstrap.js"></script>
     <link rel="stylesheet" href="/media/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/media/layui/css/layui.css" media="all">
+    <!-- <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css"> -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/media/css/app.css" media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/media/css/font-awesome.min.css">
+    <style type="text/css">
+        iframe{
+            width: 98%;
+            height: 98%;
+        }
+        .layui-tab-item{
+            height: 98%;
+        }
+    </style>
 
 
 </head>
 <body>
 <div class="container-fluid main profile">
+    <div class="layui-header">
+        <div class="layui-logo">
+            <img src="${pageContext.request.contextPath}/media/images/zx_logo.png" style="margin-left: 10px;margin-top: 10px;height: 50px" /><span
+                style="font-size: 22px"></span>
+        </div>
+
+    </div>
 
     <div class="panel panel-default">
         <!-- Default panel contents -->

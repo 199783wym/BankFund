@@ -70,6 +70,21 @@
   <sql id="Base_Column_List">
     id, account_code, fund_code, transaction_value, quotient, date
   </sql>
+  <select id="selectByExample" parameterType="com.citic.bank.model.TradeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from order_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -79,6 +94,12 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from order_info
     where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.citic.bank.model.TradeExample">
+    delete from order_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
   </delete>
   <insert id="insert" parameterType="com.citic.bank.model.Trade">
     insert into order_info (id, account_code, fund_code, 

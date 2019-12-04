@@ -62,7 +62,7 @@
             }
         }
 
-        <<<<<<< HEAD
+        // <<<<<<< HEAD
         element.tabAdd('demo', {
             title:n
             ,content: '<iframe data-frameid="'+id+'" scrolling="auto" frameborder="0" src="'+u+'"></iframe>' //支持传入html

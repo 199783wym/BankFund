@@ -17,7 +17,7 @@ public class FundSellServiceImp implements FundSellService {
     WealthMapper wealthMapper;
 
     @Override
-    public boolean sellFund(String account, double share) {
+    public boolean sellFund(String account, double money) {
 
         //Step1. Get the fund the people own
         List<Wealth> currentWealth=wealthMapper.selectByAccount(Long.parseLong(account));
@@ -25,12 +25,13 @@ public class FundSellServiceImp implements FundSellService {
             return false;
         }//Of if, the case of the wrong number
         Wealth wealth=currentWealth.get(0);
-        if(share>wealth.getShare()){
+        double share=money/price;
+        if(share>wealth.getShare()||share<0){
             return false;
         }//Of if
         double currentShare=wealth.getShare()-share;
         wealth.setShare(currentShare);
-        double currentMoney=wealth.getMoney()-price*share;
+        double currentMoney=wealth.getMoney()-money;
         wealth.setMoney(currentMoney);
 
         //Step2. Update the money

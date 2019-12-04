@@ -4,7 +4,7 @@ public class SellInfoBody {
 
     private String account;
     private String fundCode;
-    private String sellMoney;
+    private double sellMoney;
 
     public String getAccount() {
         return account;
@@ -22,11 +22,11 @@ public class SellInfoBody {
         this.fundCode = fundCode;
     }
 
-    public String getSellMoney() {
+    public double getSellMoney() {
         return sellMoney;
     }
 
-    public void setSellMoney(String sellMoney) {
+    public void setSellMoney(double sellMoney) {
         this.sellMoney = sellMoney;
     }
 }//Of class sellInfoBody

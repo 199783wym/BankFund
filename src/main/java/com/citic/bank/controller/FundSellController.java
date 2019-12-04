@@ -25,10 +25,10 @@ public class FundSellController {
         return fundInfo.getAllTrade();
     }//Of getHistory
 
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping("/test")
     public String getByid(){
-        return "";
+        return "/personwealth.jsp";
     }//Of getByid
 
 

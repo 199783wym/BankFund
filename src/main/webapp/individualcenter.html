@@ -21,6 +21,11 @@
             background: lightgreen;
         }
     </style>
+    <script>
+        function sellfund() {
+            var word = prompt("输入卖出金额","");
+        }
+    </script>
 </head>
 <body>
     <div class="container-fluid">
@@ -35,42 +40,67 @@
                         <li class="list-group-item">手机号：XXX</li>
                         <li class="list-group-item">银行卡号：XXX</li>
                         <li class="list-group-item">身份证号：XXXX</li>
+
                     </ul>
                 </div>
             </div>
             <div class="col-md-5">
                 <h3>个人资产</h3>
-                <table class="table table-bordered">
-                    <caption>总资产：XXX  昨日收益：XXX 总收益：XXX</caption>
-                    <thead>
-                    <tr class="title">
-                        <th>基金名称</th>
-                        <th>基金编号</th>
-                        <th>持有资产</th>
-                        <th>昨日收益</th>
-                        <th>累计收益</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>兴业添天盈货币A</td>
-                        <td>001624</td>
-                        <td>1.00</td>
-                        <td>1.00</td>
-                        <td>1.00</td>
-                        <td>
-                            <form class="form-inline">
-                                <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入金额" style="width: 100px">
-                            </form>
-                            <a href="#" style="margin-left: 35px">卖出</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div style="height: 300px;overflow-y: scroll;">
+                    <table class="table table-bordered">
+                        <caption>总资产：XXX  昨日收益：XXX 总收益：XXX</caption>
+                        <thead>
+                        <tr class="title">
+                            <th>基金名称</th>
+                            <th>基金编号</th>
+                            <th>持有资产</th>
+                            <th>昨日收益</th>
+                            <th>累计收益</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>兴业添天盈货币A</td>
+                            <td>001624</td>
+                            <td>1.00</td>
+                            <td>1.00</td>
+                            <td>1.00</td>
+                            <td>
+                                <a  href="#"  onclick="sellfund()">卖出</a>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <h3>个人收藏</h3>
+
+                <div style="height: 300px;overflow-y: scroll;">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr class="title">
+                            <th>基金名称</th>
+                            <th>基金编号</th>
+                            <th>收藏日期</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>兴业添天盈货币A</td>
+                            <td>001624</td>
+                            <td>2019-09-09 09:09:09</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
             <div class="col-md-4">
-                <h3>历史记录</h3>
+                <h3>交易记录</h3>
+                <div style="height: 650px;overflow-y: scroll;">
                 <table class="table table-bordered">
                     <caption> &nbsp;</caption>
                     <thead>
@@ -92,6 +122,7 @@
                     </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

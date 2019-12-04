@@ -30,4 +30,11 @@ public interface UserMapper {
 
     @Select("select * from fund_account_info")
     List<User> selectAllUsers();
+
+    @Select("select * from fund_account_info where id=#{id}")
+    User selectById(@Param("id") Long id);
+
+    @Select("select * from fund_account_info where account_code=#{accountCode}")
+    User selectByAccout(@Param("accountCode") String accountCode);
+
 }

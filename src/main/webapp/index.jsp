@@ -57,7 +57,27 @@
                 location.href="${pageContext.request.contextPath}/user/exituser";
             }
         }
+
+<<<<<<< HEAD
+        element.tabAdd('demo', {
+            title:n
+            ,content: '<iframe data-frameid="'+id+'" scrolling="auto" frameborder="0" src="'+u+'"></iframe>' //支持传入html
+            ,id:id
+        });
+        element.tabChange('demo', id);
+        element.render();
+        tid=id;
+    }
+	
+    //退出
+    function exit() {
+		if(confirm("确认退出吗？")){
+			location.href="${pageContext.request.contextPath}/user/exituser";
+		}
+	}
+
     </script>
+
     <style type="text/css">
         ul {
             list-style:none;
@@ -297,7 +317,7 @@
             <%--<a href="javascript:showTab(1001,'${pageContext.request.contextPath}/process/myTask','待办事项');">待办事项<span class="layui-badge">${sessionScope.taskSum}</span></a>--%>
             <%--</li>--%>
             <li class="layui-nav-item">
-                <a href="javascript:;">
+                <a href="javascript:">
                     登录
                 </a>
                 <dl class="layui-nav-child">
@@ -306,7 +326,12 @@
                     <dd><a href="javascript:showTab(1002,'password.jsp','修改密码');">修改密码</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="#" onclick="exit();">注销</a></li>
+<%--            <li class="layui-nav-item"><a href="#" onclick="exit();">注销</a></li>--%>
+            <li class="layui-nav-item">
+                <a href="regPage.jsp">
+                    注册
+                </a>
+            </li>
         </ul>
     </div>
     <div class="layui-body" id="container" >

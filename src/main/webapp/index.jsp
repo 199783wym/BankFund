@@ -317,7 +317,7 @@
             <%--<a href="javascript:showTab(1001,'${pageContext.request.contextPath}/process/myTask','待办事项');">待办事项<span class="layui-badge">${sessionScope.taskSum}</span></a>--%>
             <%--</li>--%>
             <li class="layui-nav-item">
-                <a href="javascript:">
+                <a href="loginPage.jsp">
                     登录
                 </a>
                 <dl class="layui-nav-child">

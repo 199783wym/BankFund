@@ -10,10 +10,10 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper {
     int deleteByPrimaryKey(UserKey key);
 
-    // 全部字段插入
+    // 注册，插入全部字段
     int insert(User record);
 
-    // 部分字段插入
+    // 注册，插入部分字段
     int insertSelective(User record);
 
     List<User> selectByExample(UserExample example);

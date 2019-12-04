@@ -16,7 +16,7 @@ public class FundInfoImp implements FundInfo {
 
     @Override
     public List<Trade> getAllTrade() {
-        List result=tradeMapper.getAllTrades();
+        List result=null;//tradeMapper.getAllTrades();
         return result;
     }//Of fun getAllTrade
 

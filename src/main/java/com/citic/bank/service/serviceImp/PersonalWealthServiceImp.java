@@ -1,5 +1,6 @@
 package com.citic.bank.service.serviceImp;
 
+import com.citic.bank.dao.CollectMapper;
 import com.citic.bank.dao.ProductMapper;
 import com.citic.bank.dao.TradeMapper;
 import com.citic.bank.dao.WealthMapper;
@@ -8,10 +9,7 @@ import com.citic.bank.service.PersonalWealthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class PersonalWealthServiceImp implements PersonalWealthService {
@@ -23,6 +21,9 @@ public class PersonalWealthServiceImp implements PersonalWealthService {
 
     @Autowired
     TradeMapper tradeMapper;
+
+    @Autowired
+    CollectMapper collectMapper;
 
     @Override
     public List<PersonalWealth> getPersonalWealthById(String id) {
@@ -84,13 +85,70 @@ public class PersonalWealthServiceImp implements PersonalWealthService {
     }
 
     @Override
-    public List<Trade> getHistoryTrade(String accountCode) {
+    public List<TradeExtend> getHistoryTrade(String accountCode) {
 
-        TradeExample tradeExample=new TradeExample();
+        TradeExample tradeExample = new TradeExample();
         tradeExample.createCriteria().andAccountCodeEqualTo(accountCode);
-//        List<Trade> tradeList=tradeMapper
-        return null;
+
+        List<Trade> tradeList = tradeMapper.selectByExample(tradeExample);
+        /**
+         * Concat the fund number and the fund name
+         */
+        Set<String> hashSet = new HashSet<>();
+        for (Trade t : tradeList) {
+            hashSet.add(t.getFundCode());
+        }//Of for
+
+        ProductExample productExample = new ProductExample();
+        productExample.createCriteria().andFundCodeIn(new ArrayList<String>(hashSet));
+        List<Product> productList = productMapper.selectByExample(productExample);
+        HashMap<String, String> maps = new HashMap<>();
+        for (Product p : productList) {
+            maps.put(p.getFundCode(), p.getFundName());
+        }//Of for
+
+        ArrayList<TradeExtend> tradeExtends = new ArrayList<>();
+        for (Trade t : tradeList) {
+            TradeExtend current = new TradeExtend(t, maps.get(t.getFundCode()));
+            tradeExtends.add(current);
+        }//Of for
+
+        return tradeExtends;
+
     }//Of getHistoryTrade
+
+    @Override
+    public List<CollectExtend> getCollectList(String account) {
+        CollectExample collectExample = new CollectExample();
+        collectExample.createCriteria().andAccountCodeEqualTo(account);
+        List<Collect> collectList = collectMapper.selectByExample(collectExample);
+
+        /**
+         * Concat the fund number and the fund name
+         */
+        Set<String> hashSet = new HashSet<>();
+        for (Collect t : collectList) {
+            hashSet.add(t.getFundCode());
+        }//Of for
+
+        ProductExample productExample = new ProductExample();
+        productExample.createCriteria().andFundCodeIn(new ArrayList<String>(hashSet));
+        List<Product> productList = productMapper.selectByExample(productExample);
+        HashMap<String, String> maps = new HashMap<>();
+        for (Product p : productList) {
+            maps.put(p.getFundCode(), p.getFundName());
+        }//Of for
+
+        ArrayList<CollectExtend> collectExtends = new ArrayList<>();
+        for (Collect collect : collectList) {
+            CollectExtend current = new CollectExtend(collect, maps.get(collect.getFundCode()));
+            collectExtends.add(current);
+        }//Of for
+
+
+
+        return collectExtends;
+    }//Of getCollectList
 
 
 }

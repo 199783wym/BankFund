@@ -44,25 +44,25 @@
                         </div>
                         <div class="panel-body" style="">
                             <form class="layui-form layui-form-pane" action="/login">
+
                                 <div class="layui-form-item" style="margin-top: 16px">
                                     <label class="layui-form-label">手机号：</label>
                                     <div class="layui-input-inline">
                                         <input type="text" name="number" placeholder="请输入手机号" autocomplete="on" class="layui-input">
                                     </div>
                                 </div>
-
                                 <div class="layui-form-item" style="margin-top: 36px">
                                     <label class="layui-form-label">登录密码：</label>
                                     <div class="layui-input-inline">
                                         <input type="password" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
+                                <div style="margin-top: 40px; margin-left: 104px">
+                                <button type="submit" class="layui-btn layui-btn-lg layui-btn-danger layui-btn-radius">登录</button>
+                                </div>
                             </form>
                         </div>
 
-                        <div style="margin-top: 40px; margin-left: 104px">
-                            <button type="button" class="layui-btn layui-btn-lg layui-btn-danger layui-btn-radius">登录</button>
-                        </div>
                     </div>
                 </div>
             </div>

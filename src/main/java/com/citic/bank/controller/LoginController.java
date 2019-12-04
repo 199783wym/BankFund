@@ -30,20 +30,20 @@ public class LoginController {
         return "loginPage.jsp";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
-    public int login(@RequestParam(value = "number", required = false) String number,
-                        @RequestParam(value = "password", required = false) String password,
+    @RequestMapping("login")
+    public String login(@Param(value = "number") String number,
+                        @Param(value = "password") String password,
                         Model model){
          User user=new User();
          user.setAccountPhone(number);
          user.setAccountPwd(Md5.MD5(password.replace(" ","").trim()));
+        user = loginService.Login(user);
          if(user.getId()!=null){
              UserSession.putUserSession(user);
          }else{
              model.addAttribute("success", "登录失败");
-             return 0;
+             return "successBuy.jsp";
          }
-        return 1;
+        return "index.jsp";
     }
 }

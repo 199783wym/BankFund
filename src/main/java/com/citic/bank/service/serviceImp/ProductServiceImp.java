@@ -192,7 +192,7 @@ public class ProductServiceImp implements ProductService {
         WealthExample wealthExample = new WealthExample();
         wealthExample.createCriteria().andFidEqualTo(trade.getFundCode()).andUidEqualTo(Long.parseLong(trade.getAccountCode()));
         List<Wealth> wealths = wealthMapper.selectByExample(wealthExample);
-        if(wealths==null){//不存在插入一条
+        if(wealths.size() ==0){//不存在插入一条
             wealth.setMoney(Double.parseDouble(trade.getTransactionValue()));
             wealth.setShare(Double.parseDouble(trade.getQuotient()));
             wealthMapper.insert(wealth);

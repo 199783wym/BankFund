@@ -78,10 +78,10 @@ public class IndexController {
         model.addAttribute("productList6", productList1);
         model.addAttribute("productList1",productDTOS);
         model.addAttribute("key",name);
-        if(name!=null || !name.equals("")){
-            return "index.jsp";
-        }else{
+        if(name!=null && !name.equals("")){
             return "search.jsp";
+        }else{
+            return "index.jsp";
         }
 
     }

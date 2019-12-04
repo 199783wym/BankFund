@@ -1,9 +1,10 @@
 package com.citic.bank.controller;
 
 import com.citic.bank.model.User;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import com.citic.bank.util.Md5;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 public class UserController {
 
@@ -12,8 +13,12 @@ public class UserController {
         return false;
     }
 
-    //判断注册是否成功
-    public void registerSuccess(User user){
+    //注册用户
+    @RequestMapping(value = "UserUpdateImp", method = RequestMethod.POST)
+    @ResponseBody
+    public int registerUser(User user){
+        String passwdByMd5 = Md5.MD5(user.getAccountPwd());
 
+        return 0;
     }
 }

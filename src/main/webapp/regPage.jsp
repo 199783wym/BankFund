@@ -17,23 +17,41 @@
 
 
 
-<%--    <script type="text/javascript" language="JavaScript">--%>
+    <script type="text/javascript" language="JavaScript">
 
-<%--        $(document).ready(function(){--%>
-<%--            $('#addUser').click(function () {--%>
-<%--                $.ajax({--%>
-<%--                    type: "post",--%>
-<%--                    url: "/",--%>
-<%--                    data: {--%>
-<%--                        user_id: $,--%>
-<%--                        user_name: $,--%>
-<%--                        user_pwd: $,--%>
-<%--                    }--%>
-<%--                })--%>
-<%--            })--%>
-<%--        })--%>
+        $(document).ready(function(){
+            $('#addUser').click(function () {
+                $.ajax({
+                    type: "post",
+                    url: "/",
+                    data: {
+                        user_id: $,
+                        user_name: $,
+                        user_pwd: $,
+                    },
+                    datatype: "JSON",
+                    async: false,
+                    beforeSend: function () {
+                        alert("正在提交....");
+                    },
+                    success: function (data) {
+                        if (data == -1){
 
-<%--    </script>--%>
+                        } else if (data == 0){
+
+                        } else {
+                            alert("注册成功");
+                            window.location.href("#loginPage.jsp");
+                        }
+                    },
+                    error: function(){
+                        alert("提交失败，请重试！");
+                    }
+                })
+            });
+        })
+
+    </script>
 </head>
 
 <body>
@@ -50,7 +68,7 @@
 
         <div class="panel panel-primary" style="margin-top: 32px;margin-left: 15%;margin-right: 15%;">
             <div class="panel-heading">
-                <b style="font-size: 32px">欢迎注册我行用户</b>
+                <b style="font-size: 32px">欢迎注册成为我行基金用户</b>
                 <hr>
             </div>
 
@@ -84,6 +102,14 @@
                             <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-form-mid layui-word-aux">请重复您设置的密码</div>
+                    </div>
+
+                    <div class="layui-form-item" style="margin-top: 40px">
+                        <label class="layui-form-label">绑定身份证</label>
+                        <div class="layui-input-inline" style="width: 240px">
+                            <input type="text" name="password" placeholder="请输入正确的身份证号" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">请输入本人的身份证号</div>
                     </div>
 
                     <div class="layui-form-item" style="margin-top: 40px">

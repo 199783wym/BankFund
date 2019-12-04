@@ -27,8 +27,8 @@ public class FundSellController {
 
     @ResponseBody
     @RequestMapping("/test")
-    public Trade getByid(){
-        return fundInfo.getById("1");
+    public String getByid(){
+        return "";
     }//Of getByid
 
 

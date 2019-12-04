@@ -57,6 +57,11 @@
 			location.href="${pageContext.request.contextPath}/user/exituser";
 		}
 	}
+
+	//跳转到注册页面
+    function go2RegPage() {
+        location.href="regPage.jsp";
+    }
 </script>
     <style type="text/css">
         *{ padding:0; margin:0; list-style:none; border:0;}
@@ -221,7 +226,7 @@
                 <%--<a href="javascript:showTab(1001,'${pageContext.request.contextPath}/process/myTask','待办事项');">待办事项<span class="layui-badge">${sessionScope.taskSum}</span></a>--%>
             <%--</li>--%>
             <li class="layui-nav-item">
-                <a href="javascript:;">
+                <a href="javascript:">
                     登录
                 </a>
                 <dl class="layui-nav-child">
@@ -230,7 +235,12 @@
                     <dd><a href="javascript:showTab(1002,'password.jsp','修改密码');">修改密码</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="#" onclick="exit();">注销</a></li>
+<%--            <li class="layui-nav-item"><a href="#" onclick="exit();">注销</a></li>--%>
+            <li class="layui-nav-item">
+                <a href="javascript:go2RegPage();">
+                    注册
+                </a>
+            </li>
         </ul>
     </div>
     <div class="layui-body" id="container" >

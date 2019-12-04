@@ -24,15 +24,7 @@ public class ProductServiceImp implements ProductService {
     @Autowired
     private CompyMapper compyMapper;
 
-    @Override
-    public List<Product> queryProduct(Product product) {
-        ProductExample productExample=new ProductExample();
-        if(product.getFundType()!=null) {
-            productExample.createCriteria().andFundTypeEqualTo(product.getFundType());
-        }
-        return productMapper.selectByExample(productExample);
 
-    }
 
     @Override
     public Product showProduct(Long id) {
@@ -49,5 +41,47 @@ public class ProductServiceImp implements ProductService {
         List<Compy> compys = compyMapper.selectByExample(compyExample);
         Compy compy = compys.get(0);
         return compy;
+    }
+
+    @Override
+    public List<Product> queryProductAll() {
+        ProductExample productExample=new ProductExample();
+        return productMapper.selectByExample(productExample);
+    }
+
+    @Override
+    public List<Product> queryProduct1() {
+        ProductExample productExample=new ProductExample();
+
+        productExample.createCriteria().andFundTypeEqualTo("货币型");
+
+        return productMapper.selectByExample(productExample);
+    }
+
+    @Override
+    public List<Product> queryProduct2() {
+        ProductExample productExample=new ProductExample();
+
+        productExample.createCriteria().andFundTypeEqualTo("股票型");
+
+        return productMapper.selectByExample(productExample);
+    }
+
+    @Override
+    public List<Product> queryProduct3() {
+        ProductExample productExample=new ProductExample();
+
+        productExample.createCriteria().andFundTypeEqualTo("债券型");
+
+        return productMapper.selectByExample(productExample);
+    }
+
+    @Override
+    public List<Product> queryProduct4() {
+        ProductExample productExample=new ProductExample();
+
+        productExample.createCriteria().andFundTypeEqualTo("保本型");
+
+        return productMapper.selectByExample(productExample);
     }
 }

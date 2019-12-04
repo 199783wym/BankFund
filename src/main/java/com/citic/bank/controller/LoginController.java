@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Author: ym
@@ -27,9 +30,10 @@ public class LoginController {
         return "loginPage.jsp";
     }
 
-    @RequestMapping("/login")
-    public String login(@Param(value="number")String number,
-                        @Param("password")String password,
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
+    public int login(@RequestParam(value = "number", required = false) String number,
+                        @RequestParam(value = "password", required = false) String password,
                         Model model){
          User user=new User();
          user.setAccountPhone(number);
@@ -38,8 +42,8 @@ public class LoginController {
              UserSession.putUserSession(user);
          }else{
              model.addAttribute("success", "登录失败");
-             return "successBuy.jsp";
+             return 0;
          }
-        return "index.jsp";
+        return 1;
     }
 }

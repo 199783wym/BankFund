@@ -2,6 +2,7 @@ package com.citic.bank.controller;
 
 import com.citic.bank.model.Trade;
 import com.citic.bank.service.ProductService;
+import com.citic.bank.util.UserSession;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,12 @@ public class BuyFundController {
     public String buyFund(@Param(value="productId")String productId,
                           @Param(value = "amount")String amount,
                           Model model){
+        if(UserSession.getUserSession()==null){
+            model.addAttribute("success", "请先登录");
+            return "successBuy.jsp";
+        }
          Trade trade= new Trade();
-         trade.setAccountCode("1234");
+         trade.setAccountCode(UserSession.getUserSession().getAccountCode());
          trade.setFundCode(productId);
          trade.setDate(new Date());
          trade.setTransactionValue(amount);

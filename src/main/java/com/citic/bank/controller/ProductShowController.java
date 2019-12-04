@@ -20,6 +20,12 @@ public class ProductShowController {
     @Autowired
     private ProductService productService;
 
+    /**
+     * 产品展示页面
+     * @param id
+     * @param model
+     * @return
+     */
 
     @RequestMapping("/product/{id}")
     public String showProduct(@PathVariable(name="id")Long id,Model model) {

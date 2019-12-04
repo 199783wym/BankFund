@@ -30,6 +30,11 @@ public class ProductServiceImp implements ProductService {
     @Autowired
     private WealthMapper wealthMapper;
 
+    /**
+     * 显示基金
+     * @param id
+     * @return
+     */
 
 
     @Override
@@ -48,6 +53,11 @@ public class ProductServiceImp implements ProductService {
         Compy compy = compys.get(0);
         return compy;
     }
+
+    /**
+     * 查所有
+     * @return
+     */
 
     @Override
     public List<ProductDTO> queryProductAll() {
@@ -75,6 +85,11 @@ public class ProductServiceImp implements ProductService {
         return productDTOS;
     }
 
+    /**
+     * 分类查
+     * @return
+     */
+
     @Override
     public List<ProductDTO> queryProduct1() {
         ProductExample productExample=new ProductExample();
@@ -101,7 +116,10 @@ public class ProductServiceImp implements ProductService {
         }
         return productDTOS;
     }
-
+    /**
+     * 分类查
+     * @return
+     */
     @Override
     public List<ProductDTO> queryProduct2() {
         ProductExample productExample=new ProductExample();
@@ -128,6 +146,10 @@ public class ProductServiceImp implements ProductService {
         }
         return productDTOS;
     }
+    /**
+     * 分类查
+     * @return
+     */
 
     @Override
     public List<ProductDTO> queryProduct3() {
@@ -155,6 +177,10 @@ public class ProductServiceImp implements ProductService {
         }
         return productDTOS;
     }
+    /**
+     * 分类查
+     * @return
+     */
 
     @Override
     public List<ProductDTO> queryProduct4() {
@@ -183,6 +209,12 @@ public class ProductServiceImp implements ProductService {
         return productDTOS;
     }
 
+    /**
+     * 插入交易信息
+     * @param trade
+     * @return
+     */
+
     @Override
     public int insert(Trade trade) {
         Wealth wealth = new Wealth();
@@ -209,6 +241,12 @@ public class ProductServiceImp implements ProductService {
         tradeMapper.insert(trade);
         return 1;
     }
+
+    /**
+     * 模糊查询
+     * @param name
+     * @return
+     */
 
     @Override
     public List<ProductDTO> query(String name) {

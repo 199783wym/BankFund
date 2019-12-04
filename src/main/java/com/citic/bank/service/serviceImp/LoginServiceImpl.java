@@ -19,12 +19,17 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * 登录操作
+     * @param user
+     * @return
+     */
     @Override
     public User Login(User user) {
        UserExample userExample= new UserExample();
         userExample.createCriteria().andAccountPhoneEqualTo(user.getAccountPhone()).andAccountPwdEqualTo(user.getAccountPwd());
         List<User> users= userMapper.selectByExample(userExample);
-        if(users.size()!=0){
+        if(users.size()!=0){//如果user不为空
             user=users.get(0);
         }
         return user;

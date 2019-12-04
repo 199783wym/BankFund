@@ -25,10 +25,23 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    /**
+     * 跳转至登录页面
+     * @return
+     */
+
     @RequestMapping("/tologin")
     public String tologin(){
         return "loginPage.jsp";
     }
+
+    /**
+     * 登录操作
+     * @param number
+     * @param password
+     * @param model
+     * @return
+     */
 
     @RequestMapping("login")
     public String login(@Param(value = "number") String number,
@@ -38,9 +51,9 @@ public class LoginController {
          user.setAccountPhone(number);
          user.setAccountPwd(Md5.MD5(password.replace(" ","").trim()));
         user = loginService.Login(user);
-         if(user.getId()!=null){
+         if(user.getId()!=null){//如果查到了id代表有该用户 则存入session
              UserSession.putUserSession(user);
-         }else{
+         }else{//失败跳转到登录失败
              model.addAttribute("success", "登录失败");
              return "successBuy.jsp";
          }

@@ -3,6 +3,7 @@ package com.citic.bank.service.serviceImp;
 import com.citic.bank.dao.CompyMapper;
 import com.citic.bank.dao.ProductMapper;
 import com.citic.bank.dao.TradeMapper;
+import com.citic.bank.dao.WealthMapper;
 import com.citic.bank.dto.ProductDTO;
 import com.citic.bank.model.*;
 import com.citic.bank.service.ProductService;
@@ -26,6 +27,8 @@ public class ProductServiceImp implements ProductService {
     private CompyMapper compyMapper;
     @Autowired
     private TradeMapper tradeMapper;
+    @Autowired
+    private WealthMapper wealthMapper;
 
 
 
@@ -182,7 +185,27 @@ public class ProductServiceImp implements ProductService {
 
     @Override
     public int insert(Trade trade) {
+        Wealth wealth = new Wealth();
+        wealth.setUid(Long.parseLong(trade.getAccountCode()));
+        wealth.setFid(trade.getFundCode());
 
+        WealthExample wealthExample = new WealthExample();
+        wealthExample.createCriteria().andFidEqualTo(trade.getFundCode()).andUidEqualTo(Long.parseLong(trade.getAccountCode()));
+        List<Wealth> wealths = wealthMapper.selectByExample(wealthExample);
+        if(wealths==null){//不存在插入一条
+            wealth.setMoney(Double.parseDouble(trade.getTransactionValue()));
+            wealth.setShare(Double.parseDouble(trade.getQuotient()));
+            wealthMapper.insert(wealth);
+        }else{//存在更新数据
+            Wealth wealthBefore = wealths.get(0);
+            Wealth newWealth =new Wealth();
+            newWealth.setMoney(wealthBefore.getMoney()+Double.parseDouble(trade.getTransactionValue()));
+            newWealth.setShare(wealthBefore.getShare()+Double.parseDouble(trade.getQuotient()));
+            WealthExample wealthExample1 = new WealthExample();
+            wealthExample1.createCriteria().andFidEqualTo(wealth.getFid());
+            wealthExample1.createCriteria().andUidEqualTo(wealth.getUid());
+            wealthMapper.updateByExampleSelective(newWealth, wealthExample1);
+        }
         tradeMapper.insert(trade);
         return 1;
     }

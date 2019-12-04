@@ -64,7 +64,7 @@
                         </tr>
                         <tr>
                             <td>日增长率:</td>
-                            <td style="color: red;">0.8</td>
+                            <td style="color: red;">0.2%</td>
                         </tr>
                         <tr>
                             <td>风险等级:</td>
@@ -86,7 +86,7 @@
                             </tr>
                             <tr>
                                 <td>月增长率:</td>
-                                <td style="color:red">0.77</td>
+                                <td style="color:red">0.12%</td>
                             </tr>
                             <tr>
                                 <td>基金类别:</td>
@@ -94,7 +94,7 @@
                             </tr>
                             <tr>
                                 <td>基金公司:</td>
-                                <td><c:out value="${product.fundMger}" default="error"></c:out></td>
+                                <td><c:out value="${product.compyName}" default="error"></c:out></td>
                             </tr>
 
                         </table>
@@ -107,7 +107,7 @@
                             </tr>
                             <tr>
                                 <td>年增长率:</td>
-                                <td style="color: red;">0.66</td>
+                                <td style="color: red;">0.11%</td>
                             </tr>
                             <tr>
                                 <td>基金状态:</td>

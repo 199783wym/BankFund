@@ -182,6 +182,7 @@ public class ProductServiceImp implements ProductService {
 
     @Override
     public int insert(Trade trade) {
+
         tradeMapper.insert(trade);
         return 1;
     }
@@ -238,7 +239,6 @@ public class ProductServiceImp implements ProductService {
             productDTOSb.add(productDTO);
         }
         productDTOSa.addAll(productDTOSb);
-
         return productDTOSa;
     }
 }

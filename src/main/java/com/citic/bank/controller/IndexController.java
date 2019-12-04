@@ -1,5 +1,6 @@
 package com.citic.bank.controller;
 
+import com.citic.bank.dto.ProductDTO;
 import com.citic.bank.model.Product;
 
 import com.citic.bank.service.ProductService;
@@ -23,8 +24,16 @@ public class IndexController {
     private ProductService productService;
     @RequestMapping("/")
     public String index(Product product, Model model){
-        List<Product> productList= productService.queryProduct(product);
-        model.addAttribute("productList", productList);
+        List<ProductDTO> productList1= productService.queryProductAll();
+        List<ProductDTO> productList2= productService.queryProduct1();
+        List<ProductDTO> productList3= productService.queryProduct2();
+        List<ProductDTO> productList4= productService.queryProduct3();
+        List<ProductDTO> productList5= productService.queryProduct4();
+        model.addAttribute("productList1", productList1);
+        model.addAttribute("productList2", productList2);
+        model.addAttribute("productList3", productList3);
+        model.addAttribute("productList4", productList4);
+        model.addAttribute("productList5", productList5);
         return "index.jsp";
     }
 }

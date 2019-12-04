@@ -10,8 +10,10 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper {
     int deleteByPrimaryKey(UserKey key);
 
+    // 全部字段插入
     int insert(User record);
 
+    // 部分字段插入
     int insertSelective(User record);
 
     List<User> selectByExample(UserExample example);
@@ -28,4 +30,11 @@ public interface UserMapper {
 
     @Select("select * from fund_account_info")
     List<User> selectAllUsers();
+
+    @Select("select * from fund_account_info where id=#{id}")
+    User selectById(@Param("id") Long id);
+
+    @Select("select * from fund_account_info where account_code=#{accountCode}")
+    User selectByAccout(@Param("accountCode") String accountCode);
+
 }

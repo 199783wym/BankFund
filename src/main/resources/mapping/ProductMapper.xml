@@ -340,4 +340,13 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
+  <select id="selectProductByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from fund_product_info
+    <if test="fundName != null and fundName != ''">
+      where fund_name like CONCAT(CONCAT('%', #{fundName}), '%');
+    </if>
+  </select>
+
 </mapper>

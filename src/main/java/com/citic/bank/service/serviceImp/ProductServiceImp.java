@@ -214,7 +214,7 @@ public class ProductServiceImp implements ProductService {
     public List<ProductDTO> query(String name) {
         ProductExample productExample=new ProductExample();
         if(name!=null) {
-            productExample.createCriteria().andFundCodeLike(name);
+            productExample.createCriteria().andFundNameLike("%"+name+"%");
         }
         List<Product> products =productMapper.selectByExample(productExample);
         List<ProductDTO> productDTOSa=new ArrayList<>();
@@ -237,31 +237,32 @@ public class ProductServiceImp implements ProductService {
             productDTOSa.add(productDTO);
         }
 
-        ProductExample productExample1=new ProductExample();
-        if(name!=null) {
-            productExample.createCriteria().andFundCodeLike(name);
-        }
-        List<Product> products1 =productMapper.selectByExample(productExample1);
-        List<ProductDTO> productDTOSb=new ArrayList<>();
-        for (Product product :
-                products1) {
-            ProductDTO productDTO = new ProductDTO();
-            BeanUtils.copyProperties(product,productDTO);
-            double min = 0.01;//最小值
-            double max = 1.00;//总和
-            int scl =  2;//小数最大位数
-            int pow = (int) Math.pow(10, scl);//指定小数位
-            double unit =Math.floor((Math.random() * (max - min) + min) * pow) / pow;
-            double one = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
-            double two = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
-            double three = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
-            productDTO.setDay(one);
-            productDTO.setMonth(two);
-            productDTO.setYear(three);
-            productDTO.setUnit(unit);
-            productDTOSb.add(productDTO);
-        }
-        productDTOSa.addAll(productDTOSb);
+//        ProductExample productExample1=new ProductExample();
+//        if(name!=null) {
+//            productExample.createCriteria().andFundNameLike("%"+name+"%");
+//        }
+//        List<Product> products1 =productMapper.selectByExample(productExample1);
+//        List<ProductDTO> productDTOSb=new ArrayList<>();
+//        for (Product product :
+//                products1) {
+//            ProductDTO productDTO = new ProductDTO();
+//            BeanUtils.copyProperties(product,productDTO);
+//            double min = 0.01;//最小值
+//            double max = 1.00;//总和
+//            int scl =  2;//小数最大位数
+//            int pow = (int) Math.pow(10, scl);//指定小数位
+//            double unit =Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+//            double one = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+//            double two = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+//            double three = Math.floor((Math.random() * (max - min) + min) * pow) / pow;
+//            productDTO.setDay(one);
+//            productDTO.setMonth(two);
+//            productDTO.setYear(three);
+//            productDTO.setUnit(unit);
+//            productDTOSb.add(productDTO);
+//        }
+//        productDTOSa.addAll(productDTOSb);
+
         return productDTOSa;
     }
 }

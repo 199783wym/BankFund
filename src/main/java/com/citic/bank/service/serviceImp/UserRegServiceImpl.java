@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserRegServiceImpl implements UserRegService {
 
-    @Autowired(required = false)
-    UserMapper userMapper;
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public int regist(User user) {

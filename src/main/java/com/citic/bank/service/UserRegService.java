@@ -1,13 +1,8 @@
 package com.citic.bank.service;
 
 import com.citic.bank.model.User;
-
-/**
- * 注册接口
- *
- */
+import org.springframework.stereotype.Service;
 
 public interface UserRegService {
-
-    public int regist(User user);
+    int regist(User user);
 }

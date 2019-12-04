@@ -4,9 +4,16 @@ import com.citic.bank.model.User;
 import com.citic.bank.model.UserExample;
 import com.citic.bank.model.UserKey;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+
+@Mapper
+@Repository
 public interface UserMapper {
     int deleteByPrimaryKey(UserKey key);
 

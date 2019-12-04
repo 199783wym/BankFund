@@ -371,7 +371,7 @@
                     <button class="layui-btn" lay-submit lay-filter="search"
                             style="width: 80px;float: right;background-color: darkred" id="btn">搜索
                     </button>
-                    <input id="searchName" type="text" name="title" required lay-verify="required" placeholder="请输入标题"
+                    <input id="searchName" type="text" name="title" required lay-verify="required" placeholder="请输入基金名称"
                            autocomplete="off" class="layui-input" style="width: 300px;float: right" value="${key}">
                 </div>
                 <div class="layui-input-block"
@@ -417,9 +417,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${productList6}" var="list1">
+                        <c:forEach items="${productList6}" var="list1" varStatus="status">
                             <tr>
-                                <td>1</td>
+                                <td>${status.index+1}</td>
                                 <td>${list1.fundName}</td>
                                 <td>${list1.day}</td>
                             </tr>

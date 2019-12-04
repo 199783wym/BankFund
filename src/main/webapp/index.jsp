@@ -314,7 +314,14 @@
                  style="margin-left: 10px;margin-top: 10px;height: 50px"/><span
                 style="font-size: 22px"></span>
         </div>
-
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item" lay-unselect>
+                <a href="${pageContext.request.contextPath}/" layadmin-event="refresh" title="刷新">
+                    <i class="layui-icon layui-icon-refresh-3"></i>
+                </a>
+            </li>
+        </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="loginPage.jsp">
@@ -371,7 +378,7 @@
                     <button class="layui-btn" lay-submit lay-filter="search"
                             style="width: 80px;float: right;background-color: darkred" id="btn">搜索
                     </button>
-                    <input id="searchName" type="text" name="title" required lay-verify="required" placeholder="请输入标题"
+                    <input id="searchName" type="text" name="title" required lay-verify="required" placeholder="请输入基金名称"
                            autocomplete="off" class="layui-input" style="width: 300px;float: right" >
                 </div>
                 <div class="layui-input-block"
@@ -488,9 +495,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${productList6}" var="list1">
+                        <c:forEach items="${productList6}" var="list1" varStatus="status">
                             <tr>
-                                <td>1</td>
+                                <td>${status.index+1}</td>
                                 <td>${list1.fundName}</td>
                                 <td>${list1.day}</td>
                             </tr>
@@ -524,22 +531,6 @@
 <script>
     layui.use('table', function(){
         var table = layui.table;
-        <%--table.render({--%>
-            <%--elem: '#tbdata1'--%>
-            <%--,url :"${pageContext.request.contextPath}/index"--%>
-            <%--,cols: [[--%>
-                <%--{field:'fundName', title:'基金名称', width:120, fixed: 'left', unresize: true, sort: true}--%>
-                <%--,{field:'fundCode', title:'基金代码', width:120}--%>
-                <%--,{field:'fundType', title:'基金类型', width:120}--%>
-                <%--,{field:'unit', title:'单位净值', width:120, sort: true}--%>
-                <%--,{field:'day', title:'日涨幅', width:100}--%>
-                <%--,{field:'month', title:'月涨幅'}--%>
-                <%--,{field:'year', title:'年涨幅', width:100, sort: true}--%>
-                <%--,{field:'riskLevel', title:'风险等级', width:100}--%>
-            <%--]]--%>
-            <%--, page: false   //开启分页--%>
-        <%--});--%>
-
         //监听行单击事件（双击事件为：rowDouble）
         table.on('row(tbdata1)', function(obj){
             var data = obj.data;

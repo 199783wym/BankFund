@@ -137,4 +137,15 @@ public class IndexController {
         int total = 10;
         return Layui.data(total, productDTOS);
     }
+
+    @RequestMapping("/question")
+    public String question(){
+        return "question.jsp";
+    }
+
+    @RequestMapping("/assessment")
+    public String assessment(){
+        return "assessment.jsp";
+    }
+
 }

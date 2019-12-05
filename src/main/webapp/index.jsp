@@ -310,18 +310,11 @@
 <div class="layui-layout layui-layout-admin kit-layout-admin">
     <div class="layui-header">
         <div class="layui-logo">
-            <img src="${pageContext.request.contextPath}/media/images/zx_logo.png"
+            <a href="/"><img src="${pageContext.request.contextPath}/media/images/zx_logo.png"
                  style="margin-left: 10px;margin-top: 10px;height: 50px"/><span
                 style="font-size: 22px"></span>
+            </a>
         </div>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item" lay-unselect>
-                <a href="${pageContext.request.contextPath}/" layadmin-event="refresh" title="刷新">
-                    <i class="layui-icon layui-icon-refresh-3"></i>
-                </a>
-            </li>
-        </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <c:if test="${empty sessionScope}">
@@ -350,11 +343,11 @@
         <div class="banner">
             <ul class="img">
                 <li>
-                    <a href="#"><img src="${pageContext.request.contextPath}/media/images/1.jpg" alt="第1张图片"
+                    <a href="${pageContext.request.contextPath}/question"><img src="${pageContext.request.contextPath}/media/images/1.jpg" alt="第1张图片"
                                      width="1440px" height="300"></a>
                 </li>
                 <li>
-                    <a href="#"><img src="${pageContext.request.contextPath}/media/images/2.jpg" alt="第2张图片"
+                    <a href="${pageContext.request.contextPath}/assessment"><img src="${pageContext.request.contextPath}/media/images/2.jpg" alt="第2张图片"
                                      width="1440px" height="300"></a>
                 </li>
                 <li>

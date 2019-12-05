@@ -339,16 +339,9 @@
                 <dl class="layui-nav-child">
 <%--                    <dd><a href="javascript:showTab(1001,'/personal','我的信息');">我的信息</a></dd>--%>
                     <dd><a href="/personal">我的信息</a></dd>
-                    <dd><a href="javascript:showTab(1001,'photo.jsp','更改头像');">更改头像</a></dd>
                     <dd><a href="/logout">退出登录</a></dd>
                 </dl>
                 </c:if>
-            </li>
-<%--            <li class="layui-nav-item"><a href="#" onclick="exit();">注销</a></li>--%>
-            <li class="layui-nav-item">
-                <a href="regPage.jsp">
-                    注册
-                </a>
             </li>
         </ul>
     </div>

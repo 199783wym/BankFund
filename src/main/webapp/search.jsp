@@ -314,7 +314,14 @@
                  style="margin-left: 10px;margin-top: 10px;height: 50px"/><span
                 style="font-size: 22px"></span>
         </div>
-
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item" lay-unselect>
+                <a href="${pageContext.request.contextPath}/" layadmin-event="refresh" title="刷新">
+                    <i class="layui-icon layui-icon-refresh-3"></i>
+                </a>
+            </li>
+        </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <c:if test="${empty sessionScope}">
@@ -326,22 +333,12 @@
                 <a href="/personal">
                         ${sessionScope.user.accountName}
                 </a>
-
-
-
                 <dl class="layui-nav-child">
                         <%--                    <dd><a href="javascript:showTab(1001,'/personal','我的信息');">我的信息</a></dd>--%>
                     <dd><a href="/personal">我的信息</a></dd>
-                    <dd><a href="javascript:showTab(1001,'photo.jsp','更改头像');">更改头像</a></dd>
                     <dd><a href="/logout">退出登录</a></dd>
                 </dl>
                 </c:if>
-<%--            <li class="layui-nav-item"><a href="#" onclick="exit();">注销</a></li>--%>
-            <li class="layui-nav-item">
-                <a href="regPage.jsp">
-                    注册
-                </a>
-            </li>
         </ul>
     </div>
     <div class="layui-body" id="container">
